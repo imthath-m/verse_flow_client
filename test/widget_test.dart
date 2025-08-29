@@ -7,9 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:provider/provider.dart';
 import 'package:verse_flow_client/main.dart';
-import 'package:verse_flow_client/providers/surah_provider.dart';
 
 void main() {
   testWidgets('Surah List Screen smoke test', (WidgetTester tester) async {
