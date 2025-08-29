@@ -19,7 +19,7 @@ class SurahListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     return Card(
       child: InkWell(
         onTap: onTap,
@@ -28,91 +28,53 @@ class SurahListItem extends StatelessWidget {
           padding: const EdgeInsets.all(AppConstants.paddingMedium),
           child: Row(
             children: [
-              // Surah number circle
-              Container(
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(
-                  color: AppConstants.primaryColor.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(24),
-                  border: Border.all(
-                    color: AppConstants.primaryColor.withValues(alpha: 0.4),
-                    width: 1.5,
-                  ),
-                ),
-                child: Center(
-                  child: Text(
-                    surah.number.toString(),
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: AppConstants.primaryColor,
-                    ),
-                  ),
-                ),
-              ),
-              
-              const SizedBox(width: AppConstants.paddingMedium),
-              
+
               // Surah details
               Expanded(
                 child: Column(
+                  spacing: AppConstants.paddingSmall,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Arabic name
-                    Text(
-                      surah.name,
-                      style: theme.textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Noto Naskh Arabic',
-                      ),
-                      textDirection: TextDirection.rtl,
-                    ),
-                    
-                    const SizedBox(height: 4),
-                    
-                    // English name and translation
+
+                    // English and Arabic names
                     Row(
+                      spacing: AppConstants.paddingSmall,
                       children: [
                         Expanded(
                           child: Text(
-                            surah.englishName,
+                            '${surah.number}. ${surah.englishName}',
                             style: theme.textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.w500,
                             ),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        const SizedBox(width: AppConstants.paddingSmall),
                         Text(
-                          '•',
-                          style: theme.textTheme.bodySmall,
-                        ),
-                        const SizedBox(width: AppConstants.paddingSmall),
-                        Expanded(
-                          child: Text(
-                            surah.englishNameTranslation,
-                            style: theme.textTheme.bodySmall,
-                            overflow: TextOverflow.ellipsis,
+                          surah.name,
+                          style: theme.textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Noto Naskh Arabic',
                           ),
+                          textDirection: TextDirection.rtl,
                         ),
                       ],
                     ),
-                    
-                    const SizedBox(height: 4),
-                    
-                    // Additional info
+
+                    // Additional info (transliteration, verses count and revelation type)
                     Row(
+                      spacing: AppConstants.paddingSmall,
                       children: [
+                        Text(
+                          surah.englishNameTranslation,
+                          style: theme.textTheme.labelSmall,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text('•', style: theme.textTheme.labelSmall),
                         Text(
                           '${surah.numberOfAyahs} verses',
                           style: theme.textTheme.labelSmall,
                         ),
-                        const SizedBox(width: AppConstants.paddingSmall),
-                        Text(
-                          '•',
-                          style: theme.textTheme.labelSmall,
-                        ),
-                        const SizedBox(width: AppConstants.paddingSmall),
+                        Text('•', style: theme.textTheme.labelSmall),
                         Text(
                           surah.revelationType,
                           style: theme.textTheme.labelSmall,
@@ -122,9 +84,9 @@ class SurahListItem extends StatelessWidget {
                   ],
                 ),
               ),
-              
+
               const SizedBox(width: AppConstants.paddingMedium),
-              
+
               // Action buttons
               Column(
                 children: [
@@ -134,25 +96,26 @@ class SurahListItem extends StatelessWidget {
                       width: 24,
                       height: 24,
                       decoration: BoxDecoration(
-                        color: surah.isDownloaded 
+                        color: surah.isDownloaded
                             ? AppConstants.successColor.withValues(alpha: 0.1)
-                            : theme.iconTheme.color?.withValues(alpha: 0.1) ?? Colors.grey.withValues(alpha: 0.1),
+                            : theme.iconTheme.color?.withValues(alpha: 0.1) ??
+                                  Colors.grey.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
-                        surah.isDownloaded 
+                        surah.isDownloaded
                             ? Icons.download_done
                             : Icons.download_outlined,
                         size: AppConstants.iconSizeSmall,
-                        color: surah.isDownloaded 
+                        color: surah.isDownloaded
                             ? AppConstants.successColor
                             : theme.iconTheme.color ?? Colors.grey,
                       ),
                     ),
-                  
+
                   if (showDownloadStatus)
                     const SizedBox(height: AppConstants.paddingSmall),
-                  
+
                   // Favorite button
                   GestureDetector(
                     onTap: onFavoriteToggle,
@@ -160,17 +123,18 @@ class SurahListItem extends StatelessWidget {
                       width: 24,
                       height: 24,
                       decoration: BoxDecoration(
-                        color: surah.isFavorite 
+                        color: surah.isFavorite
                             ? AppConstants.errorColor.withValues(alpha: 0.1)
-                            : theme.iconTheme.color?.withValues(alpha: 0.1) ?? Colors.grey.withValues(alpha: 0.1),
+                            : theme.iconTheme.color?.withValues(alpha: 0.1) ??
+                                  Colors.grey.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
-                        surah.isFavorite 
+                        surah.isFavorite
                             ? Icons.favorite
                             : Icons.favorite_border,
                         size: AppConstants.iconSizeSmall,
-                        color: surah.isFavorite 
+                        color: surah.isFavorite
                             ? AppConstants.errorColor
                             : theme.iconTheme.color ?? Colors.grey,
                       ),
