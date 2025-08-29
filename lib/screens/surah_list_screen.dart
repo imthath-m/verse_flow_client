@@ -5,6 +5,7 @@ import '../providers/surah_provider.dart';
 import '../widgets/surah_list_item.dart';
 import '../widgets/search_bar.dart';
 import '../widgets/custom_button.dart';
+import '../widgets/loading_widget.dart';
 import '../utils/constants.dart';
 
 class SurahListScreen extends StatefulWidget {
@@ -62,15 +63,9 @@ class _SurahListScreenState extends State<SurahListScreen> {
   Widget _buildBody(SurahProvider surahProvider) {
     switch (surahProvider.state) {
       case SurahListState.loading:
-        return const Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(),
-              SizedBox(height: AppConstants.paddingMedium),
-              Text('Loading surahs...'),
-            ],
-          ),
+        return const LoadingWidget(
+          message: 'Loading surahs...',
+          size: 60.0,
         );
 
       case SurahListState.error:

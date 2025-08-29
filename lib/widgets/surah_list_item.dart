@@ -31,10 +31,10 @@ class SurahListItem extends StatelessWidget {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: AppConstants.primaryColor.withOpacity(0.1),
+                  color: AppConstants.primaryColor.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(
-                    color: AppConstants.primaryColor.withOpacity(0.3),
+                    color: AppConstants.primaryColor.withValues(alpha: 0.3),
                     width: 1,
                   ),
                 ),
@@ -133,8 +133,8 @@ class SurahListItem extends StatelessWidget {
                       height: 24,
                       decoration: BoxDecoration(
                         color: surah.isDownloaded 
-                            ? AppConstants.successColor.withOpacity(0.1)
-                            : AppConstants.textSecondaryColor.withOpacity(0.1),
+                            ? AppConstants.successColor.withValues(alpha: 0.1)
+                            : AppConstants.textSecondaryColor.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
@@ -159,8 +159,8 @@ class SurahListItem extends StatelessWidget {
                       height: 24,
                       decoration: BoxDecoration(
                         color: surah.isFavorite 
-                            ? AppConstants.errorColor.withOpacity(0.1)
-                            : AppConstants.textSecondaryColor.withOpacity(0.1),
+                            ? AppConstants.errorColor.withValues(alpha: 0.1)
+                            : AppConstants.textSecondaryColor.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(

@@ -27,10 +27,10 @@ class AppTheme {
       scaffoldBackgroundColor: AppConstants.backgroundColor,
       
       // Card Theme
-      cardTheme: CardTheme(
+›      cardTheme: CardThemeData(
         color: AppConstants.surfaceColor,
         elevation: 2,
-        shadowColor: AppConstants.borderColor.withOpacity(0.1),
+        shadowColor: AppConstants.borderColor.withValues(alpha: 0.1),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
         ),
@@ -165,10 +165,10 @@ class AppTheme {
       scaffoldBackgroundColor: const Color(0xFF111827),
       
       // Card Theme
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: const Color(0xFF1F2937),
         elevation: 2,
-        shadowColor: Colors.black.withOpacity(0.3),
+        shadowColor: Colors.black.withValues(alpha: 0.3),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
         ),
