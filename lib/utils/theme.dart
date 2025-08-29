@@ -150,23 +150,23 @@ class AppTheme {
       
       // App Bar Theme
       appBarTheme: const AppBarTheme(
-        backgroundColor: Color(0xFF1F2937),
-        foregroundColor: AppConstants.surfaceColor,
+        backgroundColor: AppConstants.darkSurfaceColor,
+        foregroundColor: AppConstants.darkTextPrimaryColor,
         elevation: 0,
         centerTitle: true,
-        titleTextStyle: AppConstants.headingMedium,
+        titleTextStyle: AppConstants.darkHeadingMedium,
         iconTheme: IconThemeData(
-          color: AppConstants.surfaceColor,
+          color: AppConstants.darkTextPrimaryColor,
           size: AppConstants.iconSizeMedium,
         ),
       ),
       
       // Scaffold Theme
-      scaffoldBackgroundColor: const Color(0xFF111827),
+      scaffoldBackgroundColor: AppConstants.darkBackgroundColor,
       
       // Card Theme
       cardTheme: CardThemeData(
-        color: const Color(0xFF1F2937),
+        color: AppConstants.darkSurfaceColor,
         elevation: 2,
         shadowColor: Colors.black.withValues(alpha: 0.3),
         shape: RoundedRectangleBorder(
@@ -184,16 +184,16 @@ class AppTheme {
           horizontal: AppConstants.paddingMedium,
           vertical: AppConstants.paddingSmall,
         ),
-        titleTextStyle: AppConstants.bodyLarge,
-        subtitleTextStyle: AppConstants.bodyMedium,
-        iconColor: AppConstants.textSecondaryColor,
+        titleTextStyle: AppConstants.darkBodyLarge,
+        subtitleTextStyle: AppConstants.darkBodyMedium,
+        iconColor: AppConstants.darkTextSecondaryColor,
       ),
       
       // Elevated Button Theme
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppConstants.primaryColor,
-          foregroundColor: AppConstants.surfaceColor,
+          foregroundColor: AppConstants.darkTextPrimaryColor,
           elevation: 2,
           padding: const EdgeInsets.symmetric(
             horizontal: AppConstants.paddingLarge,
@@ -202,7 +202,7 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
           ),
-          textStyle: AppConstants.bodyLarge.copyWith(
+          textStyle: AppConstants.darkBodyLarge.copyWith(
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -211,7 +211,7 @@ class AppTheme {
       // Floating Action Button Theme
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: AppConstants.accentColor,
-        foregroundColor: AppConstants.surfaceColor,
+        foregroundColor: AppConstants.darkTextPrimaryColor,
         elevation: 4,
         iconSize: AppConstants.iconSizeMedium,
       ),
@@ -219,14 +219,14 @@ class AppTheme {
       // Input Decoration Theme
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: const Color(0xFF1F2937),
+        fillColor: AppConstants.darkSurfaceColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
-          borderSide: const BorderSide(color: AppConstants.borderColor),
+          borderSide: const BorderSide(color: AppConstants.darkBorderColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
-          borderSide: const BorderSide(color: AppConstants.borderColor),
+          borderSide: const BorderSide(color: AppConstants.darkBorderColor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
@@ -240,31 +240,31 @@ class AppTheme {
           horizontal: AppConstants.paddingMedium,
           vertical: AppConstants.paddingMedium,
         ),
-        hintStyle: AppConstants.bodyMedium.copyWith(
-          color: AppConstants.textSecondaryColor,
+        hintStyle: AppConstants.darkBodyMedium.copyWith(
+          color: AppConstants.darkTextSecondaryColor,
         ),
       ),
       
       // Icon Theme
       iconTheme: const IconThemeData(
-        color: AppConstants.textSecondaryColor,
+        color: AppConstants.darkTextSecondaryColor,
         size: AppConstants.iconSizeMedium,
       ),
       
       // Text Theme
       textTheme: const TextTheme(
-        displayLarge: AppConstants.headingLarge,
-        displayMedium: AppConstants.headingMedium,
-        displaySmall: AppConstants.headingSmall,
-        bodyLarge: AppConstants.bodyLarge,
-        bodyMedium: AppConstants.bodyMedium,
-        bodySmall: AppConstants.bodySmall,
-        labelSmall: AppConstants.caption,
+        displayLarge: AppConstants.darkHeadingLarge,
+        displayMedium: AppConstants.darkHeadingMedium,
+        displaySmall: AppConstants.darkHeadingSmall,
+        bodyLarge: AppConstants.darkBodyLarge,
+        bodyMedium: AppConstants.darkBodyMedium,
+        bodySmall: AppConstants.darkBodySmall,
+        labelSmall: AppConstants.darkCaption,
       ),
       
       // Divider Theme
       dividerTheme: const DividerThemeData(
-        color: AppConstants.borderColor,
+        color: AppConstants.darkBorderColor,
         thickness: 1,
         space: 1,
       ),
@@ -272,8 +272,8 @@ class AppTheme {
       // Progress Indicator Theme
       progressIndicatorTheme: const ProgressIndicatorThemeData(
         color: AppConstants.primaryColor,
-        linearTrackColor: AppConstants.borderColor,
-        circularTrackColor: AppConstants.borderColor,
+        linearTrackColor: AppConstants.darkBorderColor,
+        circularTrackColor: AppConstants.darkBorderColor,
       ),
     );
   }

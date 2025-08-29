@@ -54,7 +54,7 @@ class CustomButton extends StatelessWidget {
               onPressed: isLoading ? null : onPressed,
               style: ElevatedButton.styleFrom(
                 backgroundColor: backgroundColor ?? AppConstants.primaryColor,
-                foregroundColor: textColor ?? AppConstants.surfaceColor,
+                foregroundColor: textColor ?? theme.colorScheme.onPrimary,
                 elevation: 2,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
@@ -79,7 +79,7 @@ class CustomButton extends StatelessWidget {
           valueColor: AlwaysStoppedAnimation<Color>(
             isOutlined 
                 ? (backgroundColor ?? AppConstants.primaryColor)
-                : (textColor ?? AppConstants.surfaceColor),
+                : (textColor ?? theme.colorScheme.onPrimary),
           ),
         ),
       );
@@ -96,11 +96,11 @@ class CustomButton extends StatelessWidget {
           const SizedBox(width: AppConstants.paddingSmall),
           Text(
             text,
-            style: AppConstants.bodyMedium.copyWith(
+            style: theme.textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.w600,
               color: isOutlined 
                   ? (backgroundColor ?? AppConstants.primaryColor)
-                  : (textColor ?? AppConstants.surfaceColor),
+                  : (textColor ?? theme.colorScheme.onPrimary),
             ),
           ),
         ],
@@ -109,11 +109,11 @@ class CustomButton extends StatelessWidget {
 
     return Text(
       text,
-      style: AppConstants.bodyMedium.copyWith(
+      style: theme.textTheme.bodyMedium?.copyWith(
         fontWeight: FontWeight.w600,
         color: isOutlined 
             ? (backgroundColor ?? AppConstants.primaryColor)
-            : (textColor ?? AppConstants.surfaceColor),
+            : (textColor ?? theme.colorScheme.onPrimary),
       ),
     );
   }

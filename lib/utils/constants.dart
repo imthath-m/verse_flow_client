@@ -14,6 +14,13 @@ class AppConstants {
   static const Color successColor = Color(0xFF10B981);
   static const Color warningColor = Color(0xFFF59E0B);
   
+  // Dark Mode Colors
+  static const Color darkBackgroundColor = Color(0xFF111827);
+  static const Color darkSurfaceColor = Color(0xFF1F2937);
+  static const Color darkTextPrimaryColor = Color(0xFFF9FAFB);
+  static const Color darkTextSecondaryColor = Color(0xFFD1D5DB);
+  static const Color darkBorderColor = Color(0xFF374151);
+  
   // Dimensions
   static const double paddingSmall = 8.0;
   static const double paddingMedium = 16.0;
@@ -70,6 +77,49 @@ class AppConstants {
     fontSize: 10.0,
     fontWeight: FontWeight.normal,
     color: textSecondaryColor,
+  );
+  
+  // Dark Mode Text Styles
+  static const TextStyle darkHeadingLarge = TextStyle(
+    fontSize: 28.0,
+    fontWeight: FontWeight.bold,
+    color: darkTextPrimaryColor,
+  );
+  
+  static const TextStyle darkHeadingMedium = TextStyle(
+    fontSize: 24.0,
+    fontWeight: FontWeight.bold,
+    color: darkTextPrimaryColor,
+  );
+  
+  static const TextStyle darkHeadingSmall = TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w600,
+    color: darkTextPrimaryColor,
+  );
+  
+  static const TextStyle darkBodyLarge = TextStyle(
+    fontSize: 16.0,
+    fontWeight: FontWeight.normal,
+    color: darkTextPrimaryColor,
+  );
+  
+  static const TextStyle darkBodyMedium = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.normal,
+    color: darkTextPrimaryColor,
+  );
+  
+  static const TextStyle darkBodySmall = TextStyle(
+    fontSize: 12.0,
+    fontWeight: FontWeight.normal,
+    color: darkTextSecondaryColor,
+  );
+  
+  static const TextStyle darkCaption = TextStyle(
+    fontSize: 10.0,
+    fontWeight: FontWeight.normal,
+    color: darkTextSecondaryColor,
   );
   
   // Animation Durations

@@ -61,6 +61,8 @@ class _SurahListScreenState extends State<SurahListScreen> {
   }
 
   Widget _buildBody(SurahProvider surahProvider) {
+    final theme = Theme.of(context);
+    
     switch (surahProvider.state) {
       case SurahListState.loading:
         return const LoadingWidget(
@@ -81,12 +83,12 @@ class _SurahListScreenState extends State<SurahListScreen> {
               const SizedBox(height: AppConstants.paddingMedium),
               Text(
                 'Error loading surahs',
-                style: AppConstants.headingSmall,
+                style: theme.textTheme.titleMedium,
               ),
               const SizedBox(height: AppConstants.paddingSmall),
               Text(
                 surahProvider.errorMessage ?? 'Unknown error occurred',
-                style: AppConstants.bodyMedium,
+                style: theme.textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: AppConstants.paddingLarge),
@@ -118,7 +120,7 @@ class _SurahListScreenState extends State<SurahListScreen> {
                   children: [
                     Text(
                       '${surahProvider.filteredSurahs.length} results',
-                      style: AppConstants.bodySmall,
+                      style: theme.textTheme.bodySmall,
                     ),
                     const Spacer(),
                     TextButton(
@@ -141,6 +143,8 @@ class _SurahListScreenState extends State<SurahListScreen> {
   }
 
   Widget _buildEmptyState(SurahProvider surahProvider) {
+    final theme = Theme.of(context);
+    
     if (surahProvider.searchQuery.isNotEmpty) {
       return Center(
         child: Column(
@@ -149,17 +153,17 @@ class _SurahListScreenState extends State<SurahListScreen> {
             Icon(
               Icons.search_off,
               size: 64,
-              color: AppConstants.textSecondaryColor,
+              color: theme.iconTheme.color,
             ),
             const SizedBox(height: AppConstants.paddingMedium),
             Text(
               'No surahs found',
-              style: AppConstants.headingSmall,
+              style: theme.textTheme.titleMedium,
             ),
             const SizedBox(height: AppConstants.paddingSmall),
             Text(
               'Try searching with different keywords',
-              style: AppConstants.bodyMedium,
+              style: theme.textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
           ],
@@ -167,24 +171,24 @@ class _SurahListScreenState extends State<SurahListScreen> {
       );
     }
 
-    return const Center(
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
             Icons.book_outlined,
             size: 64,
-            color: AppConstants.textSecondaryColor,
+            color: theme.iconTheme.color,
           ),
-          SizedBox(height: AppConstants.paddingMedium),
+          const SizedBox(height: AppConstants.paddingMedium),
           Text(
             'No surahs available',
-            style: AppConstants.headingSmall,
+            style: theme.textTheme.titleMedium,
           ),
-          SizedBox(height: AppConstants.paddingSmall),
+          const SizedBox(height: AppConstants.paddingSmall),
           Text(
             'Please check your data source',
-            style: AppConstants.bodyMedium,
+            style: theme.textTheme.bodyMedium,
             textAlign: TextAlign.center,
           ),
         ],

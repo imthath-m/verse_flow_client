@@ -18,6 +18,8 @@ class SurahListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Card(
       child: InkWell(
         onTap: onTap,
@@ -31,17 +33,17 @@ class SurahListItem extends StatelessWidget {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: AppConstants.primaryColor.withValues(alpha: 0.1),
+                  color: AppConstants.primaryColor.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(
-                    color: AppConstants.primaryColor.withValues(alpha: 0.3),
-                    width: 1,
+                    color: AppConstants.primaryColor.withValues(alpha: 0.4),
+                    width: 1.5,
                   ),
                 ),
                 child: Center(
                   child: Text(
                     surah.number.toString(),
-                    style: AppConstants.bodyMedium.copyWith(
+                    style: theme.textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: AppConstants.primaryColor,
                     ),
@@ -59,7 +61,7 @@ class SurahListItem extends StatelessWidget {
                     // Arabic name
                     Text(
                       surah.name,
-                      style: AppConstants.bodyLarge.copyWith(
+                      style: theme.textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Noto Naskh Arabic',
                       ),
@@ -74,7 +76,7 @@ class SurahListItem extends StatelessWidget {
                         Expanded(
                           child: Text(
                             surah.englishName,
-                            style: AppConstants.bodyMedium.copyWith(
+                            style: theme.textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.w500,
                             ),
                             overflow: TextOverflow.ellipsis,
@@ -83,13 +85,13 @@ class SurahListItem extends StatelessWidget {
                         const SizedBox(width: AppConstants.paddingSmall),
                         Text(
                           '•',
-                          style: AppConstants.bodySmall,
+                          style: theme.textTheme.bodySmall,
                         ),
                         const SizedBox(width: AppConstants.paddingSmall),
                         Expanded(
                           child: Text(
                             surah.englishNameTranslation,
-                            style: AppConstants.bodySmall,
+                            style: theme.textTheme.bodySmall,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -103,17 +105,17 @@ class SurahListItem extends StatelessWidget {
                       children: [
                         Text(
                           '${surah.numberOfAyahs} verses',
-                          style: AppConstants.caption,
+                          style: theme.textTheme.labelSmall,
                         ),
                         const SizedBox(width: AppConstants.paddingSmall),
                         Text(
                           '•',
-                          style: AppConstants.caption,
+                          style: theme.textTheme.labelSmall,
                         ),
                         const SizedBox(width: AppConstants.paddingSmall),
                         Text(
                           surah.revelationType,
-                          style: AppConstants.caption,
+                          style: theme.textTheme.labelSmall,
                         ),
                       ],
                     ),
@@ -134,7 +136,7 @@ class SurahListItem extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: surah.isDownloaded 
                             ? AppConstants.successColor.withValues(alpha: 0.1)
-                            : AppConstants.textSecondaryColor.withValues(alpha: 0.1),
+                            : theme.iconTheme.color?.withValues(alpha: 0.1) ?? Colors.grey.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
@@ -144,7 +146,7 @@ class SurahListItem extends StatelessWidget {
                         size: AppConstants.iconSizeSmall,
                         color: surah.isDownloaded 
                             ? AppConstants.successColor
-                            : AppConstants.textSecondaryColor,
+                            : theme.iconTheme.color ?? Colors.grey,
                       ),
                     ),
                   
@@ -160,7 +162,7 @@ class SurahListItem extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: surah.isFavorite 
                             ? AppConstants.errorColor.withValues(alpha: 0.1)
-                            : AppConstants.textSecondaryColor.withValues(alpha: 0.1),
+                            : theme.iconTheme.color?.withValues(alpha: 0.1) ?? Colors.grey.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
@@ -170,7 +172,7 @@ class SurahListItem extends StatelessWidget {
                         size: AppConstants.iconSizeSmall,
                         color: surah.isFavorite 
                             ? AppConstants.errorColor
-                            : AppConstants.textSecondaryColor,
+                            : theme.iconTheme.color ?? Colors.grey,
                       ),
                     ),
                   ),

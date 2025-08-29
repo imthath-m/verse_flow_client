@@ -56,14 +56,16 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return Container(
       margin: const EdgeInsets.all(AppConstants.paddingMedium),
       decoration: BoxDecoration(
-        color: AppConstants.surfaceColor,
+        color: theme.cardTheme.color,
         borderRadius: BorderRadius.circular(AppConstants.radiusLarge),
         boxShadow: [
           BoxShadow(
-            color: AppConstants.borderColor.withValues(alpha: 0.1),
+            color: theme.cardTheme.shadowColor ?? Colors.black.withValues(alpha: 0.1),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -75,12 +77,12 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
         onChanged: widget.onChanged,
         decoration: InputDecoration(
           hintText: widget.hintText,
-          hintStyle: AppConstants.bodyMedium.copyWith(
-            color: AppConstants.textSecondaryColor,
+          hintStyle: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.hintColor,
           ),
           prefixIcon: Icon(
             Icons.search,
-            color: AppConstants.textSecondaryColor,
+            color: theme.iconTheme.color,
             size: AppConstants.iconSizeMedium,
           ),
           suffixIcon: _hasText
@@ -88,7 +90,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                   onPressed: _clearText,
                   icon: Icon(
                     Icons.clear,
-                    color: AppConstants.textSecondaryColor,
+                    color: theme.iconTheme.color,
                     size: AppConstants.iconSizeMedium,
                   ),
                 )
@@ -98,13 +100,13 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
             borderSide: BorderSide.none,
           ),
           filled: true,
-          fillColor: AppConstants.surfaceColor,
+          fillColor: theme.cardTheme.color,
           contentPadding: const EdgeInsets.symmetric(
             horizontal: AppConstants.paddingMedium,
             vertical: AppConstants.paddingMedium,
           ),
         ),
-        style: AppConstants.bodyMedium,
+        style: theme.textTheme.bodyMedium,
         textInputAction: TextInputAction.search,
       ),
     );
