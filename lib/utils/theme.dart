@@ -27,7 +27,7 @@ class AppTheme {
       scaffoldBackgroundColor: AppConstants.backgroundColor,
       
       // Card Theme
-›      cardTheme: CardThemeData(
+      cardTheme: CardThemeData(
         color: AppConstants.surfaceColor,
         elevation: 2,
         shadowColor: AppConstants.borderColor.withValues(alpha: 0.1),

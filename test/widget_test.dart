@@ -7,24 +7,39 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:provider/provider.dart';
 import 'package:verse_flow_client/main.dart';
+import 'package:verse_flow_client/providers/surah_provider.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Surah List Screen smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that the app title is displayed
+    expect(find.text('Verse Flow'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Verify that the search bar is present
+    expect(find.byType(TextField), findsOneWidget);
+
+    // Verify that the floating action button is present
+    expect(find.byType(FloatingActionButton), findsOneWidget);
+  });
+
+  testWidgets('Search functionality test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const MyApp());
+
+    // Find the search text field
+    final searchField = find.byType(TextField);
+    expect(searchField, findsOneWidget);
+
+    // Enter search text
+    await tester.enterText(searchField, 'Al-Faatiha');
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify that search is working (this will depend on the data being loaded)
+    // For now, just verify the text was entered
+    expect(find.text('Al-Faatiha'), findsOneWidget);
   });
 }
