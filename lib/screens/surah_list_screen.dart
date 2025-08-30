@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/surah.dart';
+import 'package:quran_cloud/quran_cloud.dart';
 import '../providers/surah_provider.dart';
 import '../providers/surah_list_item_view_model_provider.dart';
 import '../services/storage_service.dart';

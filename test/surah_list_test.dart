@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:verse_flow_client/models/surah.dart';
+import 'package:quran_cloud/quran_cloud.dart';
 import 'package:verse_flow_client/services/surah_service.dart';
 
 void main() {

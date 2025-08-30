@@ -44,6 +44,10 @@ dependencies:
   # JSON serialization
   json_annotation: ^4.9.0
 
+  # Quran Cloud API package
+  quran_cloud:
+    path: ./quran_cloud
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

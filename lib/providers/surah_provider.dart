@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import '../models/surah.dart';
+import 'package:quran_cloud/quran_cloud.dart';
 import '../services/surah_service.dart';
 
 enum SurahListState { loading, success, error }

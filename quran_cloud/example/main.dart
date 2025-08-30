@@ -12,10 +12,7 @@ class QuranCloudExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Quran Cloud Example',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-        useMaterial3: true,
-      ),
+      theme: ThemeData(primarySwatch: Colors.green, useMaterial3: true),
       home: const QuranCloudExamplePage(),
     );
   }
@@ -32,7 +29,7 @@ class _QuranCloudExamplePageState extends State<QuranCloudExamplePage> {
   final QuranService _quranService = QuranService();
   final TranslationService _translationService = TranslationService();
   final RecitationService _recitationService = RecitationService();
-  
+
   List<Surah> _surahs = [];
   String _status = 'Loading...';
   String? _error;
@@ -51,7 +48,7 @@ class _QuranCloudExamplePageState extends State<QuranCloudExamplePage> {
       });
 
       final surahs = await _quranService.getAllSurahs();
-      
+
       setState(() {
         _surahs = surahs;
         _status = 'Loaded ${surahs.length} surahs';
@@ -84,10 +81,7 @@ class _QuranCloudExamplePageState extends State<QuranCloudExamplePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              _status,
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
+            Text(_status, style: Theme.of(context).textTheme.headlineSmall),
             if (_error != null) ...[
               const SizedBox(height: 16),
               Container(
@@ -149,7 +143,6 @@ class _QuranCloudExamplePageState extends State<QuranCloudExamplePage> {
             Text('Translation: ${surah.englishNameTranslation}'),
             Text('Number of Ayahs: ${surah.numberOfAyahs}'),
             Text('Revelation Type: ${surah.revelationType}'),
-            Text('Type: ${surah.isMeccan ? 'Meccan' : 'Medinan'}'),
           ],
         ),
         actions: [

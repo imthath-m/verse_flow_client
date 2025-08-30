@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import '../models/surah.dart';
+import 'package:quran_cloud/quran_cloud.dart';
 import '../services/storage_service.dart';
 import '../viewmodels/surah_list_item_viewmodel.dart';
 
