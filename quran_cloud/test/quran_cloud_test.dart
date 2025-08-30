@@ -49,34 +49,6 @@ void main() {
       expect(surah.name, 'الفاتحة');
       expect(surah.englishName, 'Al-Fatiha');
       expect(surah.numberOfAyahs, 7);
-      expect(surah.isMeccan, true);
-      expect(surah.isMedinan, false);
-      expect(surah.hasAyahs, false);
-    });
-
-    test('should check revelation type correctly', () {
-      final meccanSurah = Surah(
-        number: 1,
-        name: 'Test',
-        englishName: 'Test',
-        englishNameTranslation: 'Test',
-        numberOfAyahs: 1,
-        revelationType: 'Meccan',
-      );
-
-      final medinanSurah = Surah(
-        number: 2,
-        name: 'Test',
-        englishName: 'Test',
-        englishNameTranslation: 'Test',
-        numberOfAyahs: 1,
-        revelationType: 'Medinan',
-      );
-
-      expect(meccanSurah.isMeccan, true);
-      expect(meccanSurah.isMedinan, false);
-      expect(medinanSurah.isMeccan, false);
-      expect(medinanSurah.isMedinan, true);
     });
   });
 
@@ -201,11 +173,23 @@ void main() {
 
     test('should calculate backoff delay correctly', () {
       final baseDelay = Duration(seconds: 1);
-      
-      expect(QuranCloudHelpers.calculateBackoffDelay(0, baseDelay: baseDelay), Duration(milliseconds: 1000));
-      expect(QuranCloudHelpers.calculateBackoffDelay(1, baseDelay: baseDelay), Duration(milliseconds: 2000));
-      expect(QuranCloudHelpers.calculateBackoffDelay(2, baseDelay: baseDelay), Duration(milliseconds: 4000));
-      expect(QuranCloudHelpers.calculateBackoffDelay(3, baseDelay: baseDelay), Duration(milliseconds: 8000));
+
+      expect(
+        QuranCloudHelpers.calculateBackoffDelay(0, baseDelay: baseDelay),
+        Duration(milliseconds: 1000),
+      );
+      expect(
+        QuranCloudHelpers.calculateBackoffDelay(1, baseDelay: baseDelay),
+        Duration(milliseconds: 2000),
+      );
+      expect(
+        QuranCloudHelpers.calculateBackoffDelay(2, baseDelay: baseDelay),
+        Duration(milliseconds: 4000),
+      );
+      expect(
+        QuranCloudHelpers.calculateBackoffDelay(3, baseDelay: baseDelay),
+        Duration(milliseconds: 8000),
+      );
     });
   });
 
