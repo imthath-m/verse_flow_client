@@ -9,22 +9,22 @@ class Edition {
   final String identifier;
   
   /// Language code (e.g., 'ar', 'en', 'fr')
-  final String language;
+  final String? language;
   
   /// Name of the edition in its native language
-  final String name;
+  final String? name;
   
   /// English name of the edition
-  final String englishName;
+  final String? englishName;
   
   /// Format of the edition (text, audio)
-  final String format;
+  final String? format;
   
   /// Type of the edition (quran, translation, versebyverse)
-  final String type;
+  final String? type;
   
   /// Text direction (ltr, rtl)
-  final String direction;
+  final String? direction;
   
   const Edition({
     required this.identifier,
@@ -71,6 +71,18 @@ class Edition {
   
   /// Checks if this is verse-by-verse format
   bool get isVerseByVerse => type == 'versebyverse';
+  
+  /// Checks if this is left-to-right text direction
+  bool get isLTR => direction?.toLowerCase() == 'ltr';
+  
+  /// Checks if this is right-to-left text direction
+  bool get isRTL => direction?.toLowerCase() == 'rtl';
+  
+  /// Checks if this is Arabic
+  bool get isArabic => language?.toLowerCase() == 'ar';
+  
+  /// Checks if this is English
+  bool get isEnglish => language?.toLowerCase() == 'en';
   
   /// Equality operator
   @override

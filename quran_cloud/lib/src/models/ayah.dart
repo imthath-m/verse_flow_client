@@ -7,25 +7,25 @@ part 'ayah.g.dart';
 @JsonSerializable()
 class Ayah {
   /// Global ayah number (1-6236)
-  final int number;
+  final int? number;
   
   /// Ayah number within the surah
-  final int numberInSurah;
+  final int? numberInSurah;
   
   /// Surah number (1-114)
-  final int juz;
+  final int? juz;
   
   /// Manzil number
-  final int manzil;
+  final int? manzil;
   
   /// Page number
-  final int page;
+  final int? page;
   
   /// Ruku number
-  final int ruku;
+  final int? ruku;
   
   /// Hizb quarter
-  final int hizbQuarter;
+  final int? hizbQuarter;
   
   /// Sajda information
   final bool? sajda;
@@ -114,7 +114,7 @@ class Ayah {
   /// Gets the ayah number from location or numberInSurah
   int get ayahNumber {
     if (location != null) return location!.ayahNumber;
-    return numberInSurah;
+    return numberInSurah ?? 1; // Default fallback
   }
   
   /// Equality operator

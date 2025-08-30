@@ -144,7 +144,7 @@ class TranslationService {
     if (start.surahNumber == end.surahNumber) {
       final surahAyahs = await getTranslationForSurah(editionId, start.surahNumber);
       return surahAyahs
-          .where((ayah) => ayah.numberInSurah >= start.ayahNumber && ayah.numberInSurah <= end.ayahNumber)
+          .where((ayah) => (ayah.numberInSurah ?? 0) >= start.ayahNumber && (ayah.numberInSurah ?? 0) <= end.ayahNumber)
           .toList();
     } else {
       // Get ayahs from multiple surahs
@@ -154,7 +154,7 @@ class TranslationService {
         final endAyah = surahNum == end.surahNumber ? end.ayahNumber : surahAyahs.length;
         
         ayahs.addAll(surahAyahs
-            .where((ayah) => ayah.numberInSurah >= startAyah && ayah.numberInSurah <= endAyah));
+            .where((ayah) => (ayah.numberInSurah ?? 0) >= startAyah && (ayah.numberInSurah ?? 0) <= endAyah));
       }
     }
     

@@ -7,13 +7,13 @@ part of 'ayah.dart';
 // **************************************************************************
 
 Ayah _$AyahFromJson(Map<String, dynamic> json) => Ayah(
-  number: (json['number'] as num).toInt(),
-  numberInSurah: (json['numberInSurah'] as num).toInt(),
-  juz: (json['juz'] as num).toInt(),
-  manzil: (json['manzil'] as num).toInt(),
-  page: (json['page'] as num).toInt(),
-  ruku: (json['ruku'] as num).toInt(),
-  hizbQuarter: (json['hizbQuarter'] as num).toInt(),
+  number: (json['number'] as num?)?.toInt(),
+  numberInSurah: (json['numberInSurah'] as num?)?.toInt(),
+  juz: (json['juz'] as num?)?.toInt(),
+  manzil: (json['manzil'] as num?)?.toInt(),
+  page: (json['page'] as num?)?.toInt(),
+  ruku: (json['ruku'] as num?)?.toInt(),
+  hizbQuarter: (json['hizbQuarter'] as num?)?.toInt(),
   sajda: json['sajda'] as bool?,
   text: json['text'] as String,
 );

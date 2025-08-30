@@ -92,7 +92,7 @@ class Surah {
     if (start < 1 || end > numberOfAyahs || start > end) return [];
     
     return ayahs!
-        .where((ayah) => ayah.numberInSurah >= start && ayah.numberInSurah <= end)
+        .where((ayah) => (ayah.numberInSurah ?? 0) >= start && (ayah.numberInSurah ?? 0) <= end)
         .toList();
   }
   

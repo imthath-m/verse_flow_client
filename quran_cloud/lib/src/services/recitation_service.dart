@@ -182,11 +182,11 @@ class RecitationService {
     final recitations = await getArabicRecitations();
     
     // Try to find by name (case insensitive)
-    final recitation = recitations.firstWhere(
-      (r) => r.name.toLowerCase().contains(reciterName.toLowerCase()) ||
-              r.englishName.toLowerCase().contains(reciterName.toLowerCase()),
-      orElse: () => recitations.first,
-    );
+          final recitation = recitations.firstWhere(
+        (r) => (r.name?.toLowerCase() ?? '').contains(reciterName.toLowerCase()) ||
+               (r.englishName?.toLowerCase() ?? '').contains(reciterName.toLowerCase()),
+        orElse: () => recitations.first,
+      );
     
     return recitation;
   }

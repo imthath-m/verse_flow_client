@@ -16,12 +16,12 @@ class QuranApiException extends QuranCloudException {
   final Map<String, dynamic>? responseData;
   
   const QuranApiException(
-    String message, {
+    super.message, {
     this.statusCode,
     this.responseData,
-    String? endpoint,
-    dynamic originalError,
-  }) : super(message, endpoint: endpoint, originalError: originalError);
+    super.endpoint,
+    super.originalError,
+  });
   
   @override
   String toString() {
@@ -39,12 +39,12 @@ class NetworkException extends QuranCloudException {
   final bool isTimeout;
   
   const NetworkException(
-    String message, {
+    super.message, {
     this.isOffline = false,
     this.isTimeout = false,
-    String? endpoint,
-    dynamic originalError,
-  }) : super(message, endpoint: endpoint, originalError: originalError);
+    super.endpoint,
+    super.originalError,
+  });
   
   @override
   String toString() {
@@ -65,12 +65,12 @@ class DataException extends QuranCloudException {
   final String? expectedType;
   
   const DataException(
-    String message, {
+    super.message, {
     this.field,
     this.expectedType,
-    String? endpoint,
-    dynamic originalError,
-  }) : super(message, endpoint: endpoint, originalError: originalError);
+    super.endpoint,
+    super.originalError,
+  });
   
   @override
   String toString() {
@@ -87,19 +87,13 @@ class RateLimitException extends QuranApiException {
   final Duration? retryAfter;
   
   const RateLimitException(
-    String message, {
+    super.message, {
     this.retryAfter,
-    int? statusCode,
-    Map<String, dynamic>? responseData,
-    String? endpoint,
-    dynamic originalError,
-  }) : super(
-    message,
-    statusCode: statusCode,
-    responseData: responseData,
-    endpoint: endpoint,
-    originalError: originalError,
-  );
+    super.statusCode,
+    super.responseData,
+    super.endpoint,
+    super.originalError,
+  });
   
   @override
   String toString() {
@@ -114,16 +108,10 @@ class RateLimitException extends QuranApiException {
 /// Exception thrown for authentication errors
 class AuthenticationException extends QuranApiException {
   const AuthenticationException(
-    String message, {
-    int? statusCode,
-    Map<String, dynamic>? responseData,
-    String? endpoint,
-    dynamic originalError,
-  }) : super(
-    message,
-    statusCode: statusCode,
-    responseData: responseData,
-    endpoint: endpoint,
-    originalError: originalError,
-  );
+    super.message, {
+    super.statusCode,
+    super.responseData,
+    super.endpoint,
+    super.originalError,
+  });
 }

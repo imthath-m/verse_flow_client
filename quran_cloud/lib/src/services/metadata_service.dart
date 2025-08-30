@@ -121,21 +121,21 @@ class MetadataService {
   /// Get available languages
   Future<List<String>> getAvailableLanguages() async {
     final allEditions = await getAllEditions();
-    final languages = allEditions.map((edition) => edition.language).toSet();
+    final languages = allEditions.map((edition) => edition.language).where((lang) => lang != null).cast<String>().toSet();
     return languages.toList()..sort();
   }
   
   /// Get available formats
   Future<List<String>> getAvailableFormats() async {
     final allEditions = await getAllEditions();
-    final formats = allEditions.map((edition) => edition.format).toSet();
+    final formats = allEditions.map((edition) => edition.format).where((format) => format != null).cast<String>().toSet();
     return formats.toList()..sort();
   }
   
   /// Get available types
   Future<List<String>> getAvailableTypes() async {
     final allEditions = await getAllEditions();
-    final types = allEditions.map((edition) => edition.type).toSet();
+    final types = allEditions.map((edition) => edition.type).where((type) => type != null).cast<String>().toSet();
     return types.toList()..sort();
   }
   
@@ -149,10 +149,18 @@ class MetadataService {
     final directions = <String, int>{};
     
     for (final edition in allEditions) {
-      languages[edition.language] = (languages[edition.language] ?? 0) + 1;
-      formats[edition.format] = (formats[edition.format] ?? 0) + 1;
-      types[edition.type] = (types[edition.type] ?? 0) + 1;
-      directions[edition.direction] = (directions[edition.direction] ?? 0) + 1;
+      if (edition.language != null) {
+        languages[edition.language!] = (languages[edition.language!] ?? 0) + 1;
+      }
+      if (edition.format != null) {
+        formats[edition.format!] = (formats[edition.format!] ?? 0) + 1;
+      }
+      if (edition.type != null) {
+        types[edition.type!] = (types[edition.type!] ?? 0) + 1;
+      }
+      if (edition.direction != null) {
+        directions[edition.direction!] = (directions[edition.direction!] ?? 0) + 1;
+      }
     }
     
     return {
@@ -180,8 +188,8 @@ class MetadataService {
     final lowercaseQuery = query.toLowerCase();
     
     return allEditions.where((edition) {
-      return edition.name.toLowerCase().contains(lowercaseQuery) ||
-             edition.englishName.toLowerCase().contains(lowercaseQuery);
+      return (edition.name?.toLowerCase() ?? '').contains(lowercaseQuery) ||
+             (edition.englishName?.toLowerCase() ?? '').contains(lowercaseQuery);
     }).toList();
   }
   
