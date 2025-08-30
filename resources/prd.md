@@ -127,7 +127,7 @@ Muslims who do **not speak Arabic fluently** who are
 **Options:**
 
 - Set default Arabic Reciter
-- Set default Translation Language (English/Tamil/Urdu)
+- Set default Translation (Language and Version. For example, English and Sahih International)
 - Set default Playback Speed
 - Manage Downloads (clear cache / view downloaded surahs)
 - App version information
