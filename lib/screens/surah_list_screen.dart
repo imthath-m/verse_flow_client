@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/surah.dart';
 import '../providers/surah_provider.dart';
+import '../providers/surah_list_item_view_model_provider.dart';
+import '../services/storage_service.dart';
 import '../widgets/surah_list_item.dart';
 import '../widgets/search_bar.dart';
 import '../widgets/custom_button.dart';
@@ -16,13 +18,22 @@ class SurahListScreen extends StatefulWidget {
 }
 
 class _SurahListScreenState extends State<SurahListScreen> {
+  late final SurahListItemViewModelProvider _viewModelProvider;
+
   @override
   void initState() {
     super.initState();
+    _viewModelProvider = SurahListItemViewModelProvider(StorageService());
     // Initialize the provider when the screen loads
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<SurahProvider>().initialize();
     });
+  }
+
+  @override
+  void dispose() {
+    _viewModelProvider.dispose();
+    super.dispose();
   }
 
   @override
@@ -62,13 +73,10 @@ class _SurahListScreenState extends State<SurahListScreen> {
 
   Widget _buildBody(SurahProvider surahProvider) {
     final theme = Theme.of(context);
-    
+
     switch (surahProvider.state) {
       case SurahListState.loading:
-        return const LoadingWidget(
-          message: 'Loading surahs...',
-          size: 60.0,
-        );
+        return const LoadingWidget(message: 'Loading surahs...', size: 60.0);
 
       case SurahListState.error:
         return Center(
@@ -81,10 +89,7 @@ class _SurahListScreenState extends State<SurahListScreen> {
                 color: AppConstants.errorColor,
               ),
               const SizedBox(height: AppConstants.paddingMedium),
-              Text(
-                'Error loading surahs',
-                style: theme.textTheme.titleMedium,
-              ),
+              Text('Error loading surahs', style: theme.textTheme.titleMedium),
               const SizedBox(height: AppConstants.paddingSmall),
               Text(
                 surahProvider.errorMessage ?? 'Unknown error occurred',
@@ -109,7 +114,7 @@ class _SurahListScreenState extends State<SurahListScreen> {
               onChanged: surahProvider.searchSurahs,
               onClear: surahProvider.clearSearch,
             ),
-            
+
             // Results count
             if (surahProvider.searchQuery.isNotEmpty)
               Padding(
@@ -130,7 +135,7 @@ class _SurahListScreenState extends State<SurahListScreen> {
                   ],
                 ),
               ),
-            
+
             // Surah list
             Expanded(
               child: surahProvider.filteredSurahs.isEmpty
@@ -144,22 +149,15 @@ class _SurahListScreenState extends State<SurahListScreen> {
 
   Widget _buildEmptyState(SurahProvider surahProvider) {
     final theme = Theme.of(context);
-    
+
     if (surahProvider.searchQuery.isNotEmpty) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.search_off,
-              size: 64,
-              color: theme.iconTheme.color,
-            ),
+            Icon(Icons.search_off, size: 64, color: theme.iconTheme.color),
             const SizedBox(height: AppConstants.paddingMedium),
-            Text(
-              'No surahs found',
-              style: theme.textTheme.titleMedium,
-            ),
+            Text('No surahs found', style: theme.textTheme.titleMedium),
             const SizedBox(height: AppConstants.paddingSmall),
             Text(
               'Try searching with different keywords',
@@ -175,16 +173,9 @@ class _SurahListScreenState extends State<SurahListScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.book_outlined,
-            size: 64,
-            color: theme.iconTheme.color,
-          ),
+          Icon(Icons.book_outlined, size: 64, color: theme.iconTheme.color),
           const SizedBox(height: AppConstants.paddingMedium),
-          Text(
-            'No surahs available',
-            style: theme.textTheme.titleMedium,
-          ),
+          Text('No surahs available', style: theme.textTheme.titleMedium),
           const SizedBox(height: AppConstants.paddingSmall),
           Text(
             'Please check your data source',
@@ -206,10 +197,10 @@ class _SurahListScreenState extends State<SurahListScreen> {
         itemCount: surahProvider.filteredSurahs.length,
         itemBuilder: (context, index) {
           final surah = surahProvider.filteredSurahs[index];
+          final viewModel = _viewModelProvider.getViewModel(surah);
           return SurahListItem(
-            surah: surah,
+            viewModel: viewModel,
             onTap: () => _onSurahTap(surah),
-            onFavoriteToggle: () => surahProvider.toggleFavorite(surah),
           );
         },
       ),

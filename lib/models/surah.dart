@@ -10,13 +10,6 @@ class Surah {
   final String englishNameTranslation;
   final int numberOfAyahs;
   final String revelationType;
-  
-  // Additional properties for app functionality
-  @JsonKey(defaultValue: false)
-  bool isFavorite;
-  
-  @JsonKey(defaultValue: false)
-  bool isDownloaded;
 
   Surah({
     required this.number,
@@ -25,8 +18,6 @@ class Surah {
     required this.englishNameTranslation,
     required this.numberOfAyahs,
     required this.revelationType,
-    this.isFavorite = false,
-    this.isDownloaded = false,
   });
 
   factory Surah.fromJson(Map<String, dynamic> json) => _$SurahFromJson(json);
@@ -34,7 +25,7 @@ class Surah {
 
   @override
   String toString() {
-    return 'Surah(number: $number, name: $name, englishName: $englishName, englishNameTranslation: $englishNameTranslation, numberOfAyahs: $numberOfAyahs, revelationType: $revelationType, isFavorite: $isFavorite, isDownloaded: $isDownloaded)';
+    return 'Surah(number: $number, name: $name, englishName: $englishName, englishNameTranslation: $englishNameTranslation, numberOfAyahs: $numberOfAyahs, revelationType: $revelationType)';
   }
 
   @override
@@ -53,18 +44,15 @@ class Surah {
     String? englishNameTranslation,
     int? numberOfAyahs,
     String? revelationType,
-    bool? isFavorite,
-    bool? isDownloaded,
   }) {
     return Surah(
       number: number ?? this.number,
       name: name ?? this.name,
       englishName: englishName ?? this.englishName,
-      englishNameTranslation: englishNameTranslation ?? this.englishNameTranslation,
+      englishNameTranslation:
+          englishNameTranslation ?? this.englishNameTranslation,
       numberOfAyahs: numberOfAyahs ?? this.numberOfAyahs,
       revelationType: revelationType ?? this.revelationType,
-      isFavorite: isFavorite ?? this.isFavorite,
-      isDownloaded: isDownloaded ?? this.isDownloaded,
     );
   }
 }

@@ -13,8 +13,6 @@ Surah _$SurahFromJson(Map<String, dynamic> json) => Surah(
   englishNameTranslation: json['englishNameTranslation'] as String,
   numberOfAyahs: (json['numberOfAyahs'] as num).toInt(),
   revelationType: json['revelationType'] as String,
-  isFavorite: json['isFavorite'] as bool? ?? false,
-  isDownloaded: json['isDownloaded'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$SurahToJson(Surah instance) => <String, dynamic>{
@@ -24,6 +22,4 @@ Map<String, dynamic> _$SurahToJson(Surah instance) => <String, dynamic>{
   'englishNameTranslation': instance.englishNameTranslation,
   'numberOfAyahs': instance.numberOfAyahs,
   'revelationType': instance.revelationType,
-  'isFavorite': instance.isFavorite,
-  'isDownloaded': instance.isDownloaded,
 };

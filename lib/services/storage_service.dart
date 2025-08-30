@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../models/surah.dart';
 
 class StorageService {
   static const String _favoritesKey = 'favorites';
@@ -118,21 +117,6 @@ class StorageService {
   /// Set default translation
   Future<void> setDefaultTranslation(String translation) async {
     await _prefs.setString(_defaultTranslationKey, translation);
-  }
-
-  // MARK: - Utility Methods
-
-  /// Update surah list with stored preferences
-  List<Surah> updateSurahsWithPreferences(List<Surah> surahs) {
-    final List<int> favorites = getFavorites();
-    final List<int> downloaded = getDownloadedSurahs();
-
-    return surahs.map((surah) {
-      return surah.copyWith(
-        isFavorite: favorites.contains(surah.number),
-        isDownloaded: downloaded.contains(surah.number),
-      );
-    }).toList();
   }
 
   /// Clear all stored data

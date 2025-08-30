@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
-import '../models/surah.dart';
 import '../utils/constants.dart';
+import '../viewmodels/surah_list_item_viewmodel.dart';
 
 class SurahListItem extends StatelessWidget {
-  final Surah surah;
+  final SurahListItemViewModel viewModel;
   final VoidCallback? onTap;
-  final VoidCallback? onFavoriteToggle;
   final bool showDownloadStatus;
 
   const SurahListItem({
     super.key,
-    required this.surah,
+    required this.viewModel,
     this.onTap,
-    this.onFavoriteToggle,
     this.showDownloadStatus = true,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final surah = viewModel.surah;
 
     return Card(
       child: InkWell(
@@ -28,14 +27,12 @@ class SurahListItem extends StatelessWidget {
           padding: const EdgeInsets.all(AppConstants.paddingMedium),
           child: Row(
             children: [
-
               // Surah details
               Expanded(
                 child: Column(
                   spacing: AppConstants.paddingSmall,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     // English and Arabic names
                     Row(
                       spacing: AppConstants.paddingSmall,
@@ -96,18 +93,18 @@ class SurahListItem extends StatelessWidget {
                       width: 24,
                       height: 24,
                       decoration: BoxDecoration(
-                        color: surah.isDownloaded
+                        color: viewModel.isDownloaded
                             ? AppConstants.successColor.withValues(alpha: 0.1)
                             : theme.iconTheme.color?.withValues(alpha: 0.1) ??
                                   Colors.grey.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
-                        surah.isDownloaded
+                        viewModel.isDownloaded
                             ? Icons.download_done
                             : Icons.download_outlined,
                         size: AppConstants.iconSizeSmall,
-                        color: surah.isDownloaded
+                        color: viewModel.isDownloaded
                             ? AppConstants.successColor
                             : theme.iconTheme.color ?? Colors.grey,
                       ),
@@ -118,23 +115,23 @@ class SurahListItem extends StatelessWidget {
 
                   // Favorite button
                   GestureDetector(
-                    onTap: onFavoriteToggle,
+                    onTap: () => viewModel.toggleFavorite(),
                     child: Container(
                       width: 24,
                       height: 24,
                       decoration: BoxDecoration(
-                        color: surah.isFavorite
+                        color: viewModel.isFavorite
                             ? AppConstants.errorColor.withValues(alpha: 0.1)
                             : theme.iconTheme.color?.withValues(alpha: 0.1) ??
                                   Colors.grey.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
-                        surah.isFavorite
+                        viewModel.isFavorite
                             ? Icons.favorite
                             : Icons.favorite_border,
                         size: AppConstants.iconSizeSmall,
-                        color: surah.isFavorite
+                        color: viewModel.isFavorite
                             ? AppConstants.errorColor
                             : theme.iconTheme.color ?? Colors.grey,
                       ),
