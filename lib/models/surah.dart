@@ -25,7 +25,7 @@ class Surah {
 
   @override
   String toString() {
-    return 'Surah(number: $number, name: $name, englishName: $englishName, englishNameTranslation: $englishNameTranslation, numberOfAyahs: $numberOfAyahs, revelationType: $revelationType)';
+    return 'Surah $number. $englishName';
   }
 
   @override
@@ -36,23 +36,4 @@ class Surah {
 
   @override
   int get hashCode => number.hashCode;
-
-  Surah copyWith({
-    int? number,
-    String? name,
-    String? englishName,
-    String? englishNameTranslation,
-    int? numberOfAyahs,
-    String? revelationType,
-  }) {
-    return Surah(
-      number: number ?? this.number,
-      name: name ?? this.name,
-      englishName: englishName ?? this.englishName,
-      englishNameTranslation:
-          englishNameTranslation ?? this.englishNameTranslation,
-      numberOfAyahs: numberOfAyahs ?? this.numberOfAyahs,
-      revelationType: revelationType ?? this.revelationType,
-    );
-  }
 }

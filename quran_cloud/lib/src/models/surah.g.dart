@@ -16,7 +16,6 @@ Surah _$SurahFromJson(Map<String, dynamic> json) => Surah(
   ayahs: (json['ayahs'] as List<dynamic>?)
       ?.map((e) => Ayah.fromJson(e as Map<String, dynamic>))
       .toList(),
-  additionalData: json['additionalData'] as Map<String, dynamic>?,
 );
 
 Map<String, dynamic> _$SurahToJson(Surah instance) => <String, dynamic>{
@@ -27,5 +26,4 @@ Map<String, dynamic> _$SurahToJson(Surah instance) => <String, dynamic>{
   'numberOfAyahs': instance.numberOfAyahs,
   'revelationType': instance.revelationType,
   'ayahs': instance.ayahs,
-  'additionalData': instance.additionalData,
 };

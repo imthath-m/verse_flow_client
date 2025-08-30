@@ -27,9 +27,6 @@ class Surah {
   /// List of ayahs in the surah (optional, may be null if not loaded)
   final List<Ayah>? ayahs;
 
-  /// Additional metadata
-  final Map<String, dynamic>? additionalData;
-
   const Surah({
     required this.number,
     required this.name,
@@ -38,7 +35,6 @@ class Surah {
     required this.numberOfAyahs,
     required this.revelationType,
     this.ayahs,
-    this.additionalData,
   });
 
   /// Creates a copy of this surah with updated values
@@ -50,7 +46,6 @@ class Surah {
     int? numberOfAyahs,
     String? revelationType,
     List<Ayah>? ayahs,
-    Map<String, dynamic>? additionalData,
   }) {
     return Surah(
       number: number ?? this.number,
@@ -61,7 +56,6 @@ class Surah {
       numberOfAyahs: numberOfAyahs ?? this.numberOfAyahs,
       revelationType: revelationType ?? this.revelationType,
       ayahs: ayahs ?? this.ayahs,
-      additionalData: additionalData ?? this.additionalData,
     );
   }
 
@@ -110,8 +104,7 @@ class Surah {
         other.englishNameTranslation == englishNameTranslation &&
         other.numberOfAyahs == numberOfAyahs &&
         other.revelationType == revelationType &&
-        other.ayahs == ayahs &&
-        other.additionalData == additionalData;
+        other.ayahs == ayahs;
   }
 
   /// Hash code
@@ -123,8 +116,7 @@ class Surah {
         englishNameTranslation.hashCode ^
         numberOfAyahs.hashCode ^
         revelationType.hashCode ^
-        ayahs.hashCode ^
-        additionalData.hashCode;
+        ayahs.hashCode;
   }
 
   /// String representation
