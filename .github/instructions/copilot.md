@@ -1,0 +1,4 @@
+- This is a Flutter project. 
+- All screens should use a ViewModel, which will interact with the service and is easily testable.
+- Complex widgets within a screen can have their own ViewModel if required.
+- ViewModels of StatefulWidgets must extend ChangeNotifier.
