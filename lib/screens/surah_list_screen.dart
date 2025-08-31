@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quran_cloud/quran_cloud.dart';
 import '../providers/surah_provider.dart';
 import '../providers/surah_list_item_view_model_provider.dart';
 import '../services/storage_service.dart';
@@ -198,29 +197,8 @@ class _SurahListScreenState extends State<SurahListScreen> {
         itemBuilder: (context, index) {
           final surah = surahProvider.filteredSurahs[index];
           final viewModel = _viewModelProvider.getViewModel(surah);
-          return SurahListItem(
-            viewModel: viewModel,
-            onTap: () => _onSurahTap(surah),
-          );
+          return SurahListItem(viewModel: viewModel);
         },
-      ),
-    );
-  }
-
-  void _onSurahTap(Surah surah) {
-    // TODO: Navigate to Audio Configuration Modal with selected surah
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Selected: ${surah.englishName}'),
-        action: SnackBarAction(
-          label: 'Configure',
-          onPressed: () {
-            // TODO: Navigate to Audio Configuration Modal
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Audio Configuration coming soon!')),
-            );
-          },
-        ),
       ),
     );
   }

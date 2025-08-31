@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:verse_flow_client/viewmodels/media_player_viewmodel.dart';
 import 'providers/surah_provider.dart';
 import 'screens/surah_list_screen.dart';
 import 'utils/theme.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SurahProvider()),
+        ChangeNotifierProvider(create: (_) => MediaPlayerViewModel()),
       ],
       child: MaterialApp(
         title: AppConstants.appName,

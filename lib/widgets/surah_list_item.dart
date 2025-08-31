@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 import '../viewmodels/surah_list_item_viewmodel.dart';
+import '../screens/media_player_screen.dart';
 
 class SurahListItem extends StatelessWidget {
   final SurahListItemViewModel viewModel;
-  final VoidCallback? onTap;
   final bool showDownloadStatus;
 
   const SurahListItem({
     super.key,
     required this.viewModel,
-    this.onTap,
     this.showDownloadStatus = true,
   });
 
@@ -21,7 +20,12 @@ class SurahListItem extends StatelessWidget {
 
     return Card(
       child: InkWell(
-        onTap: onTap,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const MediaPlayerScreen()),
+          );
+        },
         borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
         child: Padding(
           padding: const EdgeInsets.all(AppConstants.paddingMedium),

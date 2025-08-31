@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   
   # State management
-  provider: ^6.1.2
+  provider: ^6.1.5+1
   
   # Local storage
   shared_preferences: ^2.2.3
