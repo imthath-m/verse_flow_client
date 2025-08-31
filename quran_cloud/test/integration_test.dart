@@ -5,12 +5,12 @@ void main() {
   group('Integration Tests', () {
     late QuranService quranService;
     late TranslationService translationService;
-    late RecitationService recitationService;
+    late AudioService recitationService;
 
     setUp(() {
       quranService = QuranService();
       translationService = TranslationService();
-      recitationService = RecitationService();
+      recitationService = AudioService();
     });
 
     tearDown(() {

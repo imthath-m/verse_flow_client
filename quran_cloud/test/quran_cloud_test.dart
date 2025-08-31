@@ -183,6 +183,19 @@ void main() {
     });
   });
 
+  group('Audio Service Tests', () {
+    test('should get correct audio URLs for Surah An-Nasr', () async {
+      final audioService = AudioService();
+      final urls = await audioService.getSurahAudioUrls(surahNumber: 110);
+
+      expect(urls, [
+        'https://cdn.islamic.network/quran/audio/128/ar.alafasy/6214.mp3',
+        'https://cdn.islamic.network/quran/audio/128/ar.alafasy/6215.mp3',
+        'https://cdn.islamic.network/quran/audio/128/ar.alafasy/6216.mp3',
+      ]);
+    });
+  });
+
   group('Constants Tests', () {
     test('should have correct base URL', () {
       expect(QuranCloudConstants.baseUrl, 'https://api.alquran.cloud/v1');

@@ -6,12 +6,11 @@ import '../models/edition.dart';
 import '../models/recitation.dart';
 
 /// Service for fetching audio recitations and metadata
-class RecitationService {
+class AudioService {
   final QuranApiClient _client;
 
   /// Creates a new RecitationService instance
-  RecitationService({QuranApiClient? client})
-    : _client = client ?? QuranApiClient();
+  AudioService({QuranApiClient? client}) : _client = client ?? QuranApiClient();
 
   /// Get all available audio recitation editions
   Future<List<AudioEdition>> getAvailableRecitations() async {
@@ -112,6 +111,57 @@ class RecitationService {
 
     // Return the first available recitation
     return recitations.first;
+  }
+
+  /// Get the list of audio URLs for all verses in a surah
+  /// [surahNumber] is the number of the surah (1-114)
+  /// [editionIdentifier] is the identifier of the audio edition (e.g. 'ar.alafasy')
+  /// [numberOfVerses] is the total number of verses in the surah
+  /// [quality] is the bitrate of the audio files (32, 40, 48, 64, 128, or 192)
+  Future<List<String>> getSurahAudioUrls({
+    required int surahNumber,
+    String editionIdentifier = 'ar.alafasy',
+    int quality = 128,
+  }) async {
+    try {
+      // Get the first verse to validate the edition and get the correct verse numbers
+      final location = '$surahNumber:1/$editionIdentifier';
+      final response = await _client.get(ApiEndpoints.ayah(location));
+      final data = response.data as Map<String, dynamic>;
+
+      if (data['code'] != 200) {
+        throw QuranApiException(
+          data['message'] ?? 'Failed to fetch audio URL',
+          statusCode: data['code'],
+          responseData: data,
+        );
+      }
+
+      // Extract verse number from the response
+      final responseData = data['data'] as Map<String, dynamic>;
+      final firstVerseNumber = responseData['number'] as int;
+      final surahInfo = responseData['surah'] as Map<String, dynamic>;
+      final numberOfVerses = surahInfo['numberOfAyahs'] as int;
+
+      // Generate URLs for all verses using the CDN pattern
+      List<String> urls = [];
+      for (int i = 0; i < numberOfVerses; i++) {
+        final verseNumber = firstVerseNumber + i;
+        final url =
+            'https://cdn.islamic.network/quran/audio/$quality/$editionIdentifier/$verseNumber.mp3';
+        urls.add(url);
+      }
+
+      return urls;
+    } on DioException catch (e) {
+      if (e.error is QuranCloudException) {
+        rethrow;
+      }
+      throw QuranApiException(
+        'Failed to fetch audio URLs for surah $surahNumber',
+        originalError: e,
+      );
+    }
   }
 
   /// Get audio URL for a specific ayah

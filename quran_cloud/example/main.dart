@@ -28,7 +28,7 @@ class QuranCloudExamplePage extends StatefulWidget {
 class _QuranCloudExamplePageState extends State<QuranCloudExamplePage> {
   final QuranService _quranService = QuranService();
   final TranslationService _translationService = TranslationService();
-  final RecitationService _recitationService = RecitationService();
+  final AudioService _recitationService = AudioService();
 
   List<Surah> _surahs = [];
   String _status = 'Loading...';
