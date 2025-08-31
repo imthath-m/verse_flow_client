@@ -121,7 +121,7 @@ class AudioService {
   Future<List<String>> getSurahAudioUrls({
     required int surahNumber,
     String editionIdentifier = 'ar.alafasy',
-    int quality = 128,
+    String? translationIdentifier,
   }) async {
     try {
       // Get the first verse to validate the edition and get the correct verse numbers
@@ -148,8 +148,14 @@ class AudioService {
       for (int i = 0; i < numberOfVerses; i++) {
         final verseNumber = firstVerseNumber + i;
         final url =
-            'https://cdn.islamic.network/quran/audio/$quality/$editionIdentifier/$verseNumber.mp3';
+            'https://cdn.islamic.network/quran/audio/128/$editionIdentifier/$verseNumber.mp3';
         urls.add(url);
+        if (translationIdentifier != null) {
+          // Add translation audio URL if provided
+          final translationUrl =
+              'https://cdn.islamic.network/quran/audio/192/$translationIdentifier/$verseNumber.mp3';
+          urls.add(translationUrl);
+        }
       }
 
       return urls;

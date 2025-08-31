@@ -30,7 +30,7 @@ class SurahProvider extends ChangeNotifier {
       _allSurahs = await _surahService.loadSurahList();
 
       // Set filtered surahs to all surahs initially
-      _filteredSurahs = List.from(_allSurahs);
+      _filteredSurahs = List.from(_allSurahs.reversed);
 
       _setState(SurahListState.success);
     } catch (e) {

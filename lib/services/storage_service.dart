@@ -119,7 +119,7 @@ class StorageService {
 
   /// Get default translation
   String getDefaultTranslation() {
-    return _prefs.getString(_defaultTranslationKey) ?? 'en.sahih';
+    return _prefs.getString(_defaultTranslationKey) ?? 'en.walk';
   }
 
   /// Set default translation

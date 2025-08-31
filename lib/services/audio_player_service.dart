@@ -11,6 +11,7 @@ class AudioPlayerService {
     final List<String> audioUrls = await _audioService.getSurahAudioUrls(
       surahNumber: surah.number,
       editionIdentifier: _storageService.getDefaultReciter(),
+      translationIdentifier: _storageService.getDefaultTranslation(),
     );
     await _streamAudioSequentially(audioUrls);
   }
@@ -18,12 +19,12 @@ class AudioPlayerService {
   Future<void> _streamAudioSequentially(List<String> urls) async {
     try {
       // Create playlist
-      final playlist = ConcatenatingAudioSource(
-        children: urls.map((url) => AudioSource.uri(Uri.parse(url))).toList(),
-      );
+      final playlist = urls
+          .map((url) => AudioSource.uri(Uri.parse(url)))
+          .toList();
 
       // Load and start playing
-      await _player.setAudioSource(playlist);
+      await _player.setAudioSources(playlist);
       await _player.play();
     } catch (e) {
       print('Error streaming audio: $e');
@@ -31,7 +32,7 @@ class AudioPlayerService {
   }
 
   void pause() async {
-    await _player.pause();
+    await _player.stop();
   }
 
   // Don't forget to dispose
