@@ -32,6 +32,14 @@ class AudioPlayerService {
   }
 
   void pause() async {
+    await _player.pause();
+  }
+
+  void resume() async {
+    await _player.play();
+  }
+
+  void stop() async {
     await _player.stop();
   }
 
