@@ -87,7 +87,6 @@ class TranslationService {
       final editionsData = data['data'] as List;
       return editionsData
           .map((json) => AudioEdition.fromJson(json))
-          .where((edition) => edition.isTranslation)
           .toList();
     } on DioException catch (e) {
       if (e.error is QuranCloudException) {

@@ -17,12 +17,6 @@ class AudioEdition {
   /// English name of the edition
   final String englishName;
 
-  /// Format of the edition (text, audio)
-  final String? format;
-
-  /// Type of the edition (quran, translation, versebyverse)
-  final String? type;
-
   /// Text direction (ltr, rtl)
   final String? direction;
 
@@ -31,25 +25,8 @@ class AudioEdition {
     required this.language,
     required this.name,
     required this.englishName,
-    required this.format,
-    required this.type,
     required this.direction,
   });
-
-  /// Checks if this is an audio edition
-  bool get isAudio => format == 'audio';
-
-  /// Checks if this is a text edition
-  bool get isText => format == 'text';
-
-  /// Checks if this is a translation
-  bool get isTranslation => type == 'translation';
-
-  /// Checks if this is the original Quran text
-  bool get isQuran => type == 'quran';
-
-  /// Checks if this is verse-by-verse format
-  bool get isVerseByVerse => type == 'versebyverse';
 
   /// Checks if this is left-to-right text direction
   bool get isLTR => direction?.toLowerCase() == 'ltr';
@@ -79,11 +56,11 @@ class AudioEdition {
   /// String representation
   @override
   String toString() {
-    return '$format Edition: $identifier';
+    return 'Edition: $identifier';
   }
 
   /// JSON serialization
   factory AudioEdition.fromJson(Map<String, dynamic> json) =>
-      _$EditionFromJson(json);
-  Map<String, dynamic> toJson() => _$EditionToJson(this);
+      _$AudioEditionFromJson(json);
+  Map<String, dynamic> toJson() => _$AudioEditionToJson(this);
 }

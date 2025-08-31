@@ -54,10 +54,9 @@ void main() {
 
       expect(editions, isNotEmpty);
 
-      // Check that all editions are translations
+      // Check that all editions are English
       for (final edition in editions) {
-        expect(edition.isTranslation, true);
-        expect(edition.isText, true);
+        expect(edition.language, 'en');
       }
 
       // Check for English translation

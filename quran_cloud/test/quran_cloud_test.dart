@@ -59,46 +59,36 @@ void main() {
         language: 'en',
         name: 'Sahih International',
         englishName: 'Sahih International',
-        format: 'text',
-        type: 'translation',
         direction: 'ltr',
       );
 
       expect(edition.identifier, 'en.sahih');
       expect(edition.language, 'en');
-      expect(edition.isText, true);
-      expect(edition.isAudio, false);
-      expect(edition.isTranslation, true);
-      expect(edition.isQuran, false);
       expect(edition.isLTR, true);
       expect(edition.isRTL, false);
     });
 
-    test('should check format correctly', () {
-      final textEdition = AudioEdition(
+    test('should check direction correctly', () {
+      final ltrEdition = AudioEdition(
         identifier: 'test',
         language: 'en',
         name: 'Test',
         englishName: 'Test',
-        format: 'text',
-        type: 'translation',
         direction: 'ltr',
       );
 
-      final audioEdition = AudioEdition(
+      final rtlEdition = AudioEdition(
         identifier: 'test',
         language: 'ar',
         name: 'Test',
         englishName: 'Test',
-        format: 'audio',
-        type: 'versebyverse',
         direction: 'rtl',
       );
 
-      expect(textEdition.isText, true);
-      expect(textEdition.isAudio, false);
-      expect(audioEdition.isText, false);
-      expect(audioEdition.isAudio, true);
+      expect(ltrEdition.isLTR, true);
+      expect(ltrEdition.isRTL, false);
+      expect(rtlEdition.isLTR, false);
+      expect(rtlEdition.isRTL, true);
     });
   });
 
