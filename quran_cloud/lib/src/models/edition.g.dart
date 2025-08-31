@@ -6,7 +6,7 @@ part of 'edition.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Edition _$EditionFromJson(Map<String, dynamic> json) => Edition(
+AudioEdition _$EditionFromJson(Map<String, dynamic> json) => AudioEdition(
   identifier: json['identifier'] as String,
   language: json['language'] as String,
   name: json['name'] as String,
@@ -16,12 +16,13 @@ Edition _$EditionFromJson(Map<String, dynamic> json) => Edition(
   direction: json['direction'] as String?,
 );
 
-Map<String, dynamic> _$EditionToJson(Edition instance) => <String, dynamic>{
-  'identifier': instance.identifier,
-  'language': instance.language,
-  'name': instance.name,
-  'englishName': instance.englishName,
-  'format': instance.format,
-  'type': instance.type,
-  'direction': instance.direction,
-};
+Map<String, dynamic> _$EditionToJson(AudioEdition instance) =>
+    <String, dynamic>{
+      'identifier': instance.identifier,
+      'language': instance.language,
+      'name': instance.name,
+      'englishName': instance.englishName,
+      'format': instance.format,
+      'type': instance.type,
+      'direction': instance.direction,
+    };

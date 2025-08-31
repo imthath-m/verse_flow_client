@@ -18,7 +18,6 @@ export 'src/models/location.dart';
 export 'src/services/quran_service.dart';
 export 'src/services/recitation_service.dart';
 export 'src/services/translation_service.dart';
-export 'src/services/metadata_service.dart';
 
 // Export utilities
 export 'src/utils/constants.dart';

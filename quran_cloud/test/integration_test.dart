@@ -6,20 +6,17 @@ void main() {
     late QuranService quranService;
     late TranslationService translationService;
     late RecitationService recitationService;
-    late MetadataService metadataService;
 
     setUp(() {
       quranService = QuranService();
       translationService = TranslationService();
       recitationService = RecitationService();
-      metadataService = MetadataService();
     });
 
     tearDown(() {
       quranService.close();
       translationService.close();
       recitationService.close();
-      metadataService.close();
     });
 
     test('should fetch all surahs from API', () async {
@@ -99,19 +96,6 @@ void main() {
       expect(audioUrl, contains('ar.alafasy'));
       expect(audioUrl, contains('1/1.mp3'));
     });
-
-    test('should fetch all editions', () async {
-      final editions = await metadataService.getAllEditions();
-
-      expect(editions, isNotEmpty);
-
-      // Check for different types
-      final textEditions = editions.where((e) => e.isText).toList();
-      final audioEditions = editions.where((e) => e.isAudio).toList();
-
-      expect(textEditions, isNotEmpty);
-      expect(audioEditions, isNotEmpty);
-    }, timeout: Timeout(Duration(minutes: 2)));
 
     test('should search in Quran text', () async {
       final results = await quranService.search('بِسْمِ');

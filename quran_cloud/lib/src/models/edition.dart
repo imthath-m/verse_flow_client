@@ -4,7 +4,7 @@ part 'edition.g.dart';
 
 /// Represents an edition of the Quran (text, audio, or translation)
 @JsonSerializable()
-class Edition {
+class AudioEdition {
   /// Unique identifier for the edition
   final String identifier;
 
@@ -26,7 +26,7 @@ class Edition {
   /// Text direction (ltr, rtl)
   final String? direction;
 
-  const Edition({
+  const AudioEdition({
     required this.identifier,
     required this.language,
     required this.name,
@@ -67,7 +67,7 @@ class Edition {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    return other is Edition && other.identifier == identifier;
+    return other is AudioEdition && other.identifier == identifier;
   }
 
   /// Hash code
@@ -83,7 +83,7 @@ class Edition {
   }
 
   /// JSON serialization
-  factory Edition.fromJson(Map<String, dynamic> json) =>
+  factory AudioEdition.fromJson(Map<String, dynamic> json) =>
       _$EditionFromJson(json);
   Map<String, dynamic> toJson() => _$EditionToJson(this);
 }

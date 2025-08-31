@@ -14,7 +14,7 @@ class RecitationService {
     : _client = client ?? QuranApiClient();
 
   /// Get all available audio recitation editions
-  Future<List<Edition>> getAvailableRecitations() async {
+  Future<List<AudioEdition>> getAvailableRecitations() async {
     try {
       final response = await _client.get(
         ApiEndpoints.audioEditions(language: 'ar'),
@@ -30,7 +30,7 @@ class RecitationService {
       }
 
       final editionsData = data['data'] as List;
-      return editionsData.map((json) => Edition.fromJson(json)).toList();
+      return editionsData.map((json) => AudioEdition.fromJson(json)).toList();
     } on DioException catch (e) {
       if (e.error is QuranCloudException) {
         rethrow;
@@ -43,7 +43,9 @@ class RecitationService {
   }
 
   /// Get audio recitations for a specific language
-  Future<List<Edition>> getRecitationsForLanguage(String languageCode) async {
+  Future<List<AudioEdition>> getRecitationsForLanguage(
+    String languageCode,
+  ) async {
     try {
       final response = await _client.get(
         ApiEndpoints.audioEditions(language: languageCode),
@@ -60,7 +62,7 @@ class RecitationService {
       }
 
       final editionsData = data['data'] as List;
-      return editionsData.map((json) => Edition.fromJson(json)).toList();
+      return editionsData.map((json) => AudioEdition.fromJson(json)).toList();
     } on DioException catch (e) {
       if (e.error is QuranCloudException) {
         rethrow;
@@ -73,18 +75,18 @@ class RecitationService {
   }
 
   /// Get Arabic recitations (most common use case)
-  Future<List<Edition>> getArabicRecitations() async {
+  Future<List<AudioEdition>> getArabicRecitations() async {
     return getRecitationsForLanguage('ar');
   }
 
   /// Get translation audio recitations (limited languages available)
-  Future<List<Edition>> getTranslationRecitations() async {
+  Future<List<AudioEdition>> getTranslationRecitations() async {
     final allRecitations = await getAvailableRecitations();
     return allRecitations.where((edition) => edition.language != 'ar').toList();
   }
 
   /// Get best Arabic recitation edition
-  Future<Edition?> getBestArabicRecitation() async {
+  Future<AudioEdition?> getBestArabicRecitation() async {
     final recitations = await getArabicRecitations();
 
     if (recitations.isEmpty) return null;
@@ -193,7 +195,7 @@ class RecitationService {
   }
 
   /// Get recitation by reciter name
-  Future<Edition?> getRecitationByReciter(String reciterName) async {
+  Future<AudioEdition?> getRecitationByReciter(String reciterName) async {
     final recitations = await getArabicRecitations();
 
     // Try to find by name (case insensitive)
