@@ -4,7 +4,7 @@ import 'storage_service.dart';
 
 class AudioPlayerService {
   final _audioService = AudioService();
-  final _storageService = StorageService();
+  final _storageService = StorageService.instance;
   final _player = AudioPlayer();
 
   void play(Surah surah) async {

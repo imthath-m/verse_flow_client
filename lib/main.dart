@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:verse_flow_client/viewmodels/media_player_viewmodel.dart';
 import 'providers/surah_provider.dart';
+import 'services/storage_service.dart';
 import 'screens/surah_list_screen.dart';
 import 'utils/theme.dart';
 import 'utils/constants.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    StorageService.instance.initialize();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SurahProvider()),
@@ -24,7 +26,8 @@ class MyApp extends StatelessWidget {
         title: AppConstants.appName,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        themeMode: ThemeMode.system, // Automatically use light/dark theme based on system
+        themeMode: ThemeMode
+            .system, // Automatically use light/dark theme based on system
         home: const SurahListScreen(),
         debugShowCheckedModeBanner: false,
       ),

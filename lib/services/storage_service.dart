@@ -2,6 +2,14 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService {
+  static final StorageService instance = StorageService._internal();
+
+  factory StorageService() {
+    return instance;
+  }
+
+  StorageService._internal();
+
   static const String _favoritesKey = 'favorites';
   static const String _downloadedSurahsKey = 'downloaded_surahs';
   static const String _defaultLanguageKey = 'default_language';
@@ -11,7 +19,7 @@ class StorageService {
   late SharedPreferences _prefs;
 
   /// Initialize the storage service
-  Future<void> init() async {
+  Future<void> initialize() async {
     _prefs = await SharedPreferences.getInstance();
   }
 
