@@ -9,13 +9,13 @@ class Edition {
   final String identifier;
 
   /// Language code (e.g., 'ar', 'en', 'fr')
-  final String? language;
+  final String language;
 
   /// Name of the edition in its native language
-  final String? name;
+  final String name;
 
   /// English name of the edition
-  final String? englishName;
+  final String englishName;
 
   /// Format of the edition (text, audio)
   final String? format;
@@ -58,10 +58,10 @@ class Edition {
   bool get isRTL => direction?.toLowerCase() == 'rtl';
 
   /// Checks if this is Arabic
-  bool get isArabic => language?.toLowerCase() == 'ar';
+  bool get isArabic => language.toLowerCase() == 'ar';
 
   /// Checks if this is English
-  bool get isEnglish => language?.toLowerCase() == 'en';
+  bool get isEnglish => language.toLowerCase() == 'en';
 
   /// Equality operator
   @override
