@@ -6,8 +6,12 @@ import 'services/storage_service.dart';
 import 'screens/surah_list_screen.dart';
 import 'utils/theme.dart';
 import 'utils/constants.dart';
+// import 'utils/cors_test_service.dart';
 
-void main() {
+void main() async {
+  // In your widget or main function
+  // final corsTest = CorsTestService();
+  // await corsTest.testQuranApi();
   runApp(const MyApp());
 }
 

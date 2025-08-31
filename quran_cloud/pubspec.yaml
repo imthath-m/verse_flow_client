@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
   
   # HTTP client
-  dio: ^5.4.3+1
+  dio: ^5.3.3
   
   # JSON serialization
   json_annotation: ^4.9.0
