@@ -41,7 +41,7 @@ class TranslationService {
   }
 
   /// Get translation editions
-  Future<List<AudioEdition>> getTranslationEditions() async {
+  Future<List<TextEdition>> getTranslationEditions() async {
     try {
       final response = await _client.get(ApiEndpoints.translationEditions());
       final data = response.data as Map<String, dynamic>;
@@ -55,7 +55,7 @@ class TranslationService {
       }
 
       final editionsData = data['data'] as List;
-      return editionsData.map((json) => AudioEdition.fromJson(json)).toList();
+      return editionsData.map((json) => TextEdition.fromJson(json)).toList();
     } on DioException catch (e) {
       if (e.error is QuranCloudException) {
         rethrow;
@@ -68,7 +68,7 @@ class TranslationService {
   }
 
   /// Get editions for a specific language
-  Future<List<AudioEdition>> getEditionsForLanguage(String languageCode) async {
+  Future<List<TextEdition>> getEditionsForLanguage(String languageCode) async {
     try {
       final response = await _client.get(
         ApiEndpoints.editionsByLanguage(languageCode),
@@ -85,9 +85,7 @@ class TranslationService {
       }
 
       final editionsData = data['data'] as List;
-      return editionsData
-          .map((json) => AudioEdition.fromJson(json))
-          .toList();
+      return editionsData.map((json) => TextEdition.fromJson(json)).toList();
     } on DioException catch (e) {
       if (e.error is QuranCloudException) {
         rethrow;
@@ -241,7 +239,9 @@ class TranslationService {
   }
 
   /// Get best translation edition for a language
-  Future<AudioEdition?> getBestTranslationForLanguage(String languageCode) async {
+  Future<TextEdition?> getBestTranslationForLanguage(
+    String languageCode,
+  ) async {
     final editions = await getEditionsForLanguage(languageCode);
 
     if (editions.isEmpty) return null;

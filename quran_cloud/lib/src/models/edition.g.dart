@@ -11,10 +11,25 @@ AudioEdition _$AudioEditionFromJson(Map<String, dynamic> json) => AudioEdition(
   language: json['language'] as String,
   name: json['name'] as String,
   englishName: json['englishName'] as String,
-  direction: json['direction'] as String?,
 );
 
 Map<String, dynamic> _$AudioEditionToJson(AudioEdition instance) =>
+    <String, dynamic>{
+      'identifier': instance.identifier,
+      'language': instance.language,
+      'name': instance.name,
+      'englishName': instance.englishName,
+    };
+
+TextEdition _$TextEditionFromJson(Map<String, dynamic> json) => TextEdition(
+  identifier: json['identifier'] as String,
+  language: json['language'] as String,
+  name: json['name'] as String,
+  englishName: json['englishName'] as String,
+  direction: json['direction'] as String,
+);
+
+Map<String, dynamic> _$TextEditionToJson(TextEdition instance) =>
     <String, dynamic>{
       'identifier': instance.identifier,
       'language': instance.language,

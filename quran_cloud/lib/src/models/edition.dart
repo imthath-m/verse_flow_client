@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'edition.g.dart';
 
-/// Represents an edition of the Quran (text, audio, or translation)
+/// Represents an audio edition of the Quran (arabic or tranlation)
 @JsonSerializable()
 class AudioEdition {
   /// Unique identifier for the edition
@@ -17,22 +17,12 @@ class AudioEdition {
   /// English name of the edition
   final String englishName;
 
-  /// Text direction (ltr, rtl)
-  final String? direction;
-
   const AudioEdition({
     required this.identifier,
     required this.language,
     required this.name,
     required this.englishName,
-    required this.direction,
   });
-
-  /// Checks if this is left-to-right text direction
-  bool get isLTR => direction?.toLowerCase() == 'ltr';
-
-  /// Checks if this is right-to-left text direction
-  bool get isRTL => direction?.toLowerCase() == 'rtl';
 
   /// Checks if this is Arabic
   bool get isArabic => language.toLowerCase() == 'ar';
@@ -63,4 +53,31 @@ class AudioEdition {
   factory AudioEdition.fromJson(Map<String, dynamic> json) =>
       _$AudioEditionFromJson(json);
   Map<String, dynamic> toJson() => _$AudioEditionToJson(this);
+}
+
+@JsonSerializable()
+class TextEdition extends AudioEdition {
+  /// Text direction (ltr, rtl)
+  final String direction;
+
+  const TextEdition({
+    required super.identifier,
+    required super.language,
+    required super.name,
+    required super.englishName,
+    required this.direction,
+  });
+
+  /// Checks if this is left-to-right text direction
+  bool get isLTR => direction.toLowerCase() == 'ltr';
+
+  /// Checks if this is right-to-left text direction
+  bool get isRTL => direction.toLowerCase() == 'rtl';
+
+  /// JSON serialization
+  factory TextEdition.fromJson(Map<String, dynamic> json) =>
+      _$TextEditionFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$TextEditionToJson(this);
 }

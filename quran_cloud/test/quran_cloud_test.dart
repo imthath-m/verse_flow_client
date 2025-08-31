@@ -54,7 +54,7 @@ void main() {
 
   group('Edition Model Tests', () {
     test('should create edition with valid parameters', () {
-      final edition = AudioEdition(
+      final edition = TextEdition(
         identifier: 'en.sahih',
         language: 'en',
         name: 'Sahih International',
@@ -69,7 +69,7 @@ void main() {
     });
 
     test('should check direction correctly', () {
-      final ltrEdition = AudioEdition(
+      final ltrEdition = TextEdition(
         identifier: 'test',
         language: 'en',
         name: 'Test',
@@ -77,7 +77,7 @@ void main() {
         direction: 'ltr',
       );
 
-      final rtlEdition = AudioEdition(
+      final rtlEdition = TextEdition(
         identifier: 'test',
         language: 'ar',
         name: 'Test',
