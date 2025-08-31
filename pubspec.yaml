@@ -47,6 +47,8 @@ dependencies:
   # Quran Cloud API package
   quran_cloud:
     path: ./quran_cloud
+  
+  just_audio: ^0.9.35
 
 dev_dependencies:
   flutter_test:
