@@ -23,7 +23,9 @@ class SurahListItem extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const MediaPlayerScreen()),
+            MaterialPageRoute(
+              builder: (context) => MediaPlayerScreen(viewModel.surah),
+            ),
           );
         },
         borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
