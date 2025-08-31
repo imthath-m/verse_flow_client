@@ -30,6 +30,10 @@ class AudioPlayerService {
     }
   }
 
+  void pause() async {
+    await _player.pause();
+  }
+
   // Don't forget to dispose
   void dispose() {
     _player.dispose();

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:quran_cloud/quran_cloud.dart';
+import 'package:verse_flow_client/viewmodels/media_player_viewmodel.dart';
 import 'package:verse_flow_client/widgets/media_player_widget.dart';
 
 class MediaPlayerScreen extends StatelessWidget {
@@ -9,6 +11,11 @@ class MediaPlayerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Set the surah when the screen is built
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<MediaPlayerViewModel>().setSurah(_surah);
+    });
+
     return Scaffold(
       appBar: AppBar(title: Text(_surah.englishName)),
       body: const MediaPlayerWidget(),
