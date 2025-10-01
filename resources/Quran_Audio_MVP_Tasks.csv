@@ -1,0 +1,96 @@
+#,Epic,Task,Status,Priority,MVP-yes/no,Remarks,Sprint
+1,App Foundations & Setup,Initialize Flutter project with lint rules,To Do,High,Yes,First setup task,Sprint 0
+2,App Foundations & Setup,"Setup folder structure (screens, models, services)",To Do,High,Yes,Pre-requisite for all,Sprint 0
+3,App Foundations & Setup,"Configure dependencies (http, just_audio, shared_preferences, dio)",To Do,High,Yes,Required for networking + playback,Sprint 0
+4,App Foundations & Setup,Implement base navigation skeleton,To Do,High,Yes,Surah List → modal → player,Sprint 0
+5,App Foundations & Setup,"Setup environment configs (API URLs, TTS endpoint)",To Do,High,Yes,Needed before API integration,Sprint 0
+6,App Foundations & Setup,Create task template & workflow in Jira,To Do,Medium,Yes,Definition of Done included,Sprint 0
+7,Design & UX,Create low-fidelity wireframes for MVP screens,To Do,High,Yes,Wireframes only,Sprint 0
+8,Surah List,Design Surah List screen wireframe,To Do,Medium,Yes,Prepare UI layout,Sprint 1
+9,Surah List,Implement static list of 114 surahs,To Do,High,Yes,Placeholder for API data,Sprint 1
+10,Surah List,Fetch surah list from Quran API,To Do,High,Yes,Replace static data,Sprint 1
+11,Surah List,Implement search bar (by name/number),To Do,Medium,Yes,Client-side filtering,Sprint 1
+12,Surah List,Add download indicator icon for surahs,To Do,Medium,Yes,Reflects offline availability,Sprint 1
+13,Surah List,Add favorite (♥️) toggle,To Do,Medium,Yes,Connects to Favorites,Sprint 1
+14,Surah List,Tap surah → open Audio Config modal,To Do,High,Yes,Navigation link,Sprint 1
+15,Audio Config,Design Audio Config modal wireframe,To Do,Medium,Yes,UI layout planning,Sprint 2
+16,Audio Config,Build modal UI with dropdowns and range selector,To Do,High,Yes,Core user feature,Sprint 2
+17,Audio Config,Implement surah range picker (start/end ayah),To Do,High,Yes,Verse selection,Sprint 2
+18,Audio Config,Populate reciters dropdown from API,To Do,High,Yes,Placeholder API,Sprint 2
+19,Audio Config,Populate translation language dropdown,To Do,High,Yes,Dropdown static for MVP,Sprint 2
+20,Audio Config,Load translation versions based on selected language,To Do,High,Yes,Dynamic version selection,Sprint 2
+21,Audio Config,Save user selections to local storage,To Do,High,Yes,Preference persistence,Sprint 2
+22,Audio Config,Pre-populate modal with last-used defaults,To Do,Medium,Yes,Enhances usability,Sprint 2
+23,Audio Config,Implement Play → open Media Player,To Do,High,Yes,Navigation,Sprint 2
+24,Media Player,Design Media Player screen wireframe,To Do,Medium,Yes,UI baseline,Sprint 3
+25,Media Player,"Build player UI layout (Play/Pause, Next/Previous, Progress, Speed)",To Do,High,Yes,Core controls,Sprint 3
+26,Media Player,Integrate Arabic audio streaming,To Do,High,Yes,Core playback,Sprint 3
+27,Media Player,Integrate translation audio (from backend cache),To Do,High,Yes,Requires TTS backend,Sprint 3
+28,Media Player,Implement playback sequence Arabic → pause → Translation,To Do,High,Yes,Memorization pattern,Sprint 3
+29,Media Player,Implement Next/Previous verse navigation,To Do,Medium,Yes,Verse control,Sprint 3
+30,Media Player,Implement playback speed adjustment,To Do,Medium,Yes,0.5x–2x,Sprint 3
+31,Media Player,Implement progress indicator sync,To Do,Medium,Yes,Shows current verse,Sprint 3
+32,Media Player,Handle playback errors (network failure),To Do,High,Yes,Fallback UI/Snackbar,Sprint 3
+33,Media Player,Keep screen awake while playing,To Do,Low,Yes,Use wakelock,Sprint 3
+34,Media Player,Manual testing checklist for player,To Do,High,Yes,Create and run,Sprint 3
+35,Downloads,Implement pre-playback prompt: download or stream,To Do,High,Yes,Dialog confirmation,Sprint 4
+36,Downloads,Implement background download logic,To Do,High,Yes,Save to local storage,Sprint 4
+37,Downloads,Store downloaded audio in device,To Do,High,Yes,Persistence,Sprint 4
+38,Downloads,"Check/play local file if downloaded, else stream",To Do,High,Yes,Fallback logic,Sprint 4
+39,Downloads,Clear cache/manage downloads in Settings,To Do,Medium,Yes,User can delete files,Sprint 4
+40,Downloads,Manual testing checklist for downloads,To Do,High,Yes,Create and run,Sprint 4
+41,Favorites,Design Favorites screen wireframe,To Do,Medium,Yes,Before UI dev,Sprint 5
+42,Favorites,Build UI list of saved favorites,To Do,High,Yes,Display ranges,Sprint 5
+43,Favorites,Add new favorite (save surah+range+reciter+lang),To Do,High,Yes,Persistent storage,Sprint 5
+44,Favorites,Swipe-to-delete favorite,To Do,Medium,Yes,Update storage/UI,Sprint 5
+45,Favorites,Play directly from favorites list,To Do,High,Yes,End-to-end functionality,Sprint 5
+46,Favorites,Manual testing checklist for favorites,To Do,High,Yes,Create and run,Sprint 5
+47,Settings,Design Settings screen wireframe,To Do,Medium,Yes,UI baseline,Sprint 5
+48,Settings,Implement default Arabic Reciter preference,To Do,High,Yes,Stored locally,Sprint 5
+49,Settings,Implement default Translation preference,To Do,High,Yes,Language + version,Sprint 5
+50,Settings,Implement default Playback Speed preference,To Do,Medium,Yes,Stored locally,Sprint 5
+51,Settings,Implement Manage Downloads (clear/selective delete),To Do,Medium,Yes,Storage mgmt,Sprint 5
+52,Settings,Show app version info,To Do,Low,Yes,Simple display,Sprint 5
+53,Settings,Manual testing checklist for settings,To Do,High,Yes,Create and run,Sprint 5
+54,Design/UX,Create high-fidelity mockups,To Do,Medium,Yes,Align team,Sprint 6
+55,Design/UX,Apply minimal distraction-free theme,To Do,Medium,Yes,Consistency,Sprint 6
+56,Design/UX,Add empty states for downloads/favorites,To Do,Low,Yes,UX detail,Sprint 6
+57,Design/UX,Add micro-animations for player,To Do,Low,No,Stretch goal,Sprint 6
+58,Testing,Write manual test cases for Surah List,To Do,High,Yes,QA,Sprint 7
+59,Testing,Write manual test cases for Audio Config,To Do,High,Yes,QA,Sprint 7
+60,Testing,Write manual test cases for Media Player,To Do,High,Yes,QA,Sprint 7
+61,Testing,Write manual test cases for Downloads,To Do,High,Yes,QA,Sprint 7
+62,Testing,Write manual test cases for Favorites,To Do,High,Yes,QA,Sprint 7
+63,Testing,Write manual test cases for Settings,To Do,Medium,Yes,QA,Sprint 7
+64,Testing,Cross-device tests on Android & iOS,To Do,High,Yes,QA,Sprint 7
+65,Backend,Setup backend service for TTS caching,To Do,High,Yes,Infra,Sprint 4
+66,Backend,Integrate Google TTS API,To Do,High,Yes,Generate translation audio,Sprint 4
+67,Backend,Store files tagged by Surah:Ayah:Lang:Version,To Do,High,Yes,Metadata management,Sprint 4
+68,Backend,Expose API endpoint for cached/generated audio,To Do,High,Yes,App dependency,Sprint 4
+69,Backend,Add retry/fallback if TTS fails,To Do,Medium,Yes,Reliability,Sprint 4
+70,Backend,Document API endpoints for app team,To Do,Medium,Yes,Handoff,Sprint 4
+71,App Foundations,Setup environment configs for testing,To Do,High,Yes,Prep test endpoints,Sprint 0
+72,Audio Config,Validate default values loaded correctly,To Do,Medium,Yes,QA check,Sprint 2
+73,Media Player,Test playback sequence correctness,To Do,High,Yes,Arabic→Translation,Sprint 3
+74,Downloads,Test download logic across devices,To Do,High,Yes,Offline use,Sprint 4
+75,Downloads,Test Clear Cache functionality,To Do,Medium,Yes,Settings integration,Sprint 4
+76,Favorites,Test add/remove favorite flows,To Do,High,Yes,QA,Sprint 5
+77,Settings,Test default playback settings apply,To Do,Medium,Yes,QA,Sprint 5
+78,Settings,Test Manage Downloads,To Do,Medium,Yes,QA,Sprint 5
+79,Testing,Document QA results per epic,To Do,Medium,Yes,Manual tracking,Sprint 7
+80,Backend,Setup DB schema for cached audio,To Do,Medium,Yes,Link audio files,Sprint 4
+81,Backend,Setup monitoring/logging,To Do,Low,No,Future hardening,Sprint 7
+82,Backend,Test API responses for TTS files,To Do,High,Yes,QA,Sprint 4
+83,Design/UX,Finalize UI polish & colors,To Do,Medium,Yes,Sprint 6,
+84,Design/UX,Ensure responsive design across screen sizes,To Do,High,Yes,Sprint 6,
+85,Media Player,Implement verse highlighting placeholder (future),To Do,Low,No,Sprint 3,
+86,Audio Config,Add tooltip/help icons for new users,To Do,Low,No,Sprint 2,
+87,Downloads,Implement retry logic for failed downloads,To Do,Medium,Yes,Sprint 4,
+88,Favorites,Sort favorites by last played,To Do,Low,No,Sprint 5,
+89,App Foundations,Implement error logging (Flutter),To Do,Medium,Yes,Sprint 0,
+90,Media Player,Implement buffer progress indicator,To Do,Medium,Yes,Sprint 3,
+91,Media Player,Test playback speed functionality,To Do,Medium,Yes,Sprint 3,
+92,Surah List,Implement lazy loading for surah list,To Do,Medium,Yes,Improves performance,Sprint 1
+93,Audio Config,Validate language/version dependency logic,To Do,Medium,Yes,Sprint 2,
+94,Backend,Implement API rate limiting check,To Do,Low,No,Sprint 4,
+95,Testing,Prepare internal demo build,To Do,Medium,Yes,Sprint 7,

@@ -1,0 +1,75 @@
+**1. Surah List Screen**
+
+Purpose: Entry point for users to select a surah for playback.
+
+# 📄 Version 1 – Functional Requirements Document (FRD)
+
+## Feature: Surah List & Audio Playback
+
+### Purpose
+Provide users with a searchable, scrollable list of 114 Surahs, with support for favorites and audio playback settings.
+
+---
+
+## UI Components
+
+### Navigation Bar
+* Global navigation back to home or other menus.
+* Menus included:
+  * **Home**
+  * **Favorites**
+  * **Player**
+  * **Settings**
+
+### Search Bar
+* User can filter Surahs by:
+  * Surah number
+  * Surah name in Arabic
+  * Surah name in translation (user-selected language)
+
+### Surah List
+* Display a scrollable list of **114 Surahs**.
+* Each row must include:
+  * Surah number
+  * Surah name (Arabic)
+  * Surah name (Translation - user's selected language)
+  * Favorite toggle ♥️
+
+#### Favorite Toggle Behavior:
+* Default icon (not favorite): Empty heart outline (
+<img src="image.png" alt="not favorite" width="20" height="20">)
+* When marked as favorite: Filled heart icon (<img src="image-1.png" alt="favorite" width="30" height="30">)
+
+### Surah Selection
+* Clicking a Surah name opens the **Audio Playback Settings modal**.
+* Modal allows user to configure playback options (generic: reciter, speed, repeat, etc.).
+* Once selected, user can play the Surah.
+
+---
+
+## User Flow
+1. User navigates via Navigation Bar.
+2. User searches or scrolls through Surah List.
+3. User toggles favorite if desired.
+4. User clicks Surah name → Audio Playback Settings modal opens.
+5. User configures playback options and plays audio.
+
+**Visual Style:**
+
+Light theme with optional dark mode
+
+Primary color Indigo #6366F1 for selected surah highlight
+
+Secondary color Purple #8B5CF6 for icons (downloaded, favorite)
+
+Borders: 1px solid light gray #E3E6EA, rounded corners (6px)
+
+Spacing: 16px gutter, 20px padding
+
+Typography: Sans-serif, medium (500) for surah names, regular (400) for translations
+
+Surah rows have hover/tap feedback (slight background tint).
+
+Wireframe:
+
+![alt text](image-2.png)    ![alt text](image-3.png)
