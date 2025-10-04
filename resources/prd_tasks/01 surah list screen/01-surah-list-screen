@@ -18,8 +18,8 @@ Provide users with a searchable, scrollable list of 114 Surahs, with support for
 * Menus included:
   * **Home**
   * **Favorites**
-  * **Player**
   * **Settings**
+* **FAB-with Play icon for media player (refer wireframe for illustration)**
 
 ### Search Bar
 * User can filter Surahs by:
@@ -45,8 +45,6 @@ Provide users with a searchable, scrollable list of 114 Surahs, with support for
 * Modal allows user to configure playback options (generic: reciter, speed, repeat, etc.).
 * Once selected, user can play the Surah.
 
----
-
 ## User Flow
 1. User navigates via Navigation Bar.
 2. User searches or scrolls through Surah List.
@@ -55,21 +53,10 @@ Provide users with a searchable, scrollable list of 114 Surahs, with support for
 5. User configures playback options and plays audio.
 
 **Visual Style:**
+In sync with existing theme.
 
-Light theme with optional dark mode
+**Wireframe:**
 
-Primary color Indigo #6366F1 for selected surah highlight
-
-Secondary color Purple #8B5CF6 for icons (downloaded, favorite)
-
-Borders: 1px solid light gray #E3E6EA, rounded corners (6px)
-
-Spacing: 16px gutter, 20px padding
-
-Typography: Sans-serif, medium (500) for surah names, regular (400) for translations
-
-Surah rows have hover/tap feedback (slight background tint).
-
-Wireframe:
+*Note: Wireframes are illustrational only. Look and feel of the production app should be in sync with the existing theme of the project(lib>utils>theme.dart). Clarifications can be made when required. Justifiable assumptions are fine as well.*
 
 ![alt text](image-2.png)    ![alt text](image-3.png)

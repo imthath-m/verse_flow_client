@@ -1,0 +1,57 @@
+## Feature: Floating Action Button - Player
+
+### Purpose
+Provide a seamless audio playback experience optimized for Quran memorization.
+
+---
+
+## UI Components
+
+### Top Bar
+* **Back Navigation** – returns to Surah List screen.  
+* **Title** – displays current Surah + Ayah range.  
+
+### Player Controls
+* **Play / Pause toggle**  
+* **Next Verse** button  
+* **Previous Verse** button  
+* **Playback Speed** selector (dropdown)  
+
+### Progress Bar
+* Displays progress of current verse within the selected range.  
+
+### Audio Streaming
+* Automatic caching in the background for smooth playback.  
+
+---
+
+## Behavior
+
+### Audio Pattern
+* **Within each verse:**  
+  * Arabic → 300ms pause → Translation  
+* **Between verses:**  
+  * Translation (previous verse) → 500ms pause → Arabic (next verse)  
+* Plays **range once** (no loop).  
+
+### Player Invocation
+* Accessed by **Floating Action Button** (FAB with Play icon) from Surah List screen.  
+* Closed by the **Stop** button in the player FAB.
+* Initially when the **Play FAB button** is clicked, the Audio Configuration modal should launch
+* User selects the options - Arabic reciter, Transalation language etc. and clicks **Play button**
+* Then, the modal should close and the **Player FAB** should be launched and audio should be played according to the selected options.
+
+---
+
+## Visual Style
+* Follow project theme defined in:  
+  * `lib>utils>theme.dart`  
+
+---
+
+## Wireframe Reference
+*Note: Wireframes are illustrational only. Look and feel of the production app should follow the project’s theme. Clarifications can be made when required. Justifiable assumptions are fine as well.*  
+
+![alt text](image-2.png)    ![alt text](<image copy.png>)    ![alt text](image.png)
+---
+
