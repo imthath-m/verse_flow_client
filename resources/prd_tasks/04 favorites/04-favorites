@@ -14,8 +14,7 @@ Allow users quick access to saved Surah/Ayah ranges for memorization and playbac
 ### 2. Favorites List
 * Each item displays:
   * Surah number + Ayah range
-  * Reciter & Translation language
-  * **Play button** – opens Media Player with stored preferences
+  * **Play button** – opens Media Player with **default settings**
   * **Delete (trash icon)** – removes favorite after confirmation
 
 #### Delete Confirmation Dialog
@@ -24,36 +23,36 @@ Allow users quick access to saved Surah/Ayah ranges for memorization and playbac
 * Buttons: **Yes (Primary)** / **Cancel (Secondary)**
 
 ### 3. Floating Action Button (FAB)
-* Icon: **“+”**
-* Action: Opens **Audio Configuration Modal** (`lib>screens>audio_config_modal.dart`)
-* Modal includes **“Save to Favorites”** option
+* Icon: **"+"**
+* Action: Opens **Range Picker Bottom Sheet** (`lib>screens>range_picker_bottom_sheet.dart`)
+* Bottom sheet includes **Surah selection** and **Ayah range picker** only
 * On save → new entry is added to Favorites list
 
 ---
 
 ## Example Entries
-* Surah 2: Ayah 1–7 (Mishary, English)
-* Surah 36: Ayah 1–12 (Abdul Rahman, Tamil)
+* Surah 2: Ayah 1–7
+* Surah 36: Ayah 1–12
 
 ---
 
 ## Behavior
 1. **Favorites List**
    * Loads persisted favorite entries on screen load
-   * Displays Surah/Ayah range + Reciter + Translation
+   * Displays Surah/Ayah range only
    * Each entry has Play + Delete actions
 
 2. **Play Button** <span style="color: red;background-color: yellow">*(check player filename. required/not?)*</span> 
-   * Opens **Media Player** (`lib>screens>media_player.dart`) with stored settings
+   * Opens **Media Player** (`lib>screens>media_player.dart`) with **default settings**
 
 3. **Delete Action**
    * Requires confirmation dialog before removal
 
 4. **Add Action (FAB +)**
-   * Opens Audio Config Modal
-   * User selects preferences → clicks *Save to Favorites*
+   * Opens **Range Picker Bottom Sheet**
+   * User selects Surah and Ayah range → clicks *Save to Favorites*
    * Entry saved and shown in Favorites list
-   * After save, a succedd message should be displayed for 3s and then the message should be closed. clicking on the message does nothing.
+   * After save, a success message should be displayed for 3s and then the message should be closed. clicking on the message does nothing.
 
 
 ---
@@ -75,8 +74,9 @@ Allow users quick access to saved Surah/Ayah ranges for memorization and playbac
 ## Developer Notes <span style="color: red;background-color: yellow">*(check filenames. required/not?)*</span> 
 * Implement Favorites Screen in: `lib>screens>favorites.dart`
 * Integrate with:
-  * **Audio Config Modal** (`lib>screens>audio_config_modal.dart`)
+  * **Range Picker Bottom Sheet** (`lib>screens>range_picker_bottom_sheet.dart`)
   * **Media Player** (`lib>screens>media_player.dart`)
   * **Theme file** (`lib>utils>theme.dart`)
 * Persistence: store favorites locally (e.g., SharedPreferences or local DB)
+* Favorites only store Surah/Ayah ranges - no reciter/translation preferences
 
