@@ -1,7 +1,7 @@
 ## Feature: Settings Screen (MVP - Light)
 
 ### Purpose
-Provide users with the ability to set default preferences, manage downloads, and view basic system information.
+Provide users with the ability to set **default preferences** for audio playback, manage downloads, and view basic system information. These defaults are used when starting new playback sessions.
 
 ---
 
@@ -10,13 +10,13 @@ Provide users with the ability to set default preferences, manage downloads, and
 ### 1. Default Preferences
 * **Arabic Reciter (Dropdown)**
   * Displays available reciters
-  * Stores user’s default reciter for playback
+  * Stores user's **default reciter** for all new playback sessions
 * **Translation (Dropdown: Language + Version)**
   * Displays supported languages and their versions
-  * Stores user’s default translation
+  * Stores user's **default translation** for all new playback sessions
 * **Playback Speed (Dropdown)**
   * Options: 0.5x, 1x (default), 1.25x, 1.5x, 2x
-  * Stores user’s default playback speed
+  * Stores user's **default playback speed** for all new playback sessions
 
 ### 2. Downloads Management
 * **Clear Downloads Button**
@@ -44,9 +44,13 @@ Provide users with the ability to set default preferences, manage downloads, and
 ## Behavior
 
 1. **Preferences**
-   * Persist user’s selected defaults locally
-   * Auto-apply defaults when playing any Surah/Ayah
-   * Dropdown changes update stored preferences immediately
+   * Persist user's selected **defaults** locally
+   * Auto-apply defaults when starting **new playback sessions**
+   * Dropdown changes update stored **default preferences** immediately
+   * These defaults are used when:
+     * Tapping a Surah from the Surah List
+     * Playing a Favorite
+     * Starting any new audio session
 
 2. **Cache Management**
    * Clear Cache → deletes audio files, temporary data
@@ -81,8 +85,10 @@ Provide users with the ability to set default preferences, manage downloads, and
 ## Developer Notes
 * Implement Settings Screen in: `lib>screens>settings.dart`
 * Integrations:
-  * **Preferences** – store using SharedPreferences / local DB
+  * **Default Preferences** – store using SharedPreferences / local DB
   * **Downloads** – integrate with existing download manager module (if available)
   * **App Version** – read from build info (`package_info_plus` in Flutter)
 * Confirmation dialogs should follow same design as Favorites delete dialog
+* **Important**: These are **default settings** that apply to new playback sessions only
+* Session-specific changes (via FAB Player settings) don't override these defaults
 
