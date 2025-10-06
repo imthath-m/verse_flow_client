@@ -78,72 +78,17 @@ class SurahListItem extends StatelessWidget {
                           style: theme.textTheme.labelSmall,
                         ),
                         Text('•', style: theme.textTheme.labelSmall),
-                        Text(
-                          surah.revelationType,
-                          style: theme.textTheme.labelSmall,
+                        Expanded(
+                          child: Text(
+                            surah.revelationType,
+                            style: theme.textTheme.labelSmall,
+                          ),
                         ),
+                        favoriteButton(theme),
                       ],
                     ),
                   ],
                 ),
-              ),
-
-              const SizedBox(width: AppConstants.paddingMedium),
-
-              // Action buttons
-              Column(
-                children: [
-                  // Download status indicator
-                  if (showDownloadStatus)
-                    Container(
-                      width: 24,
-                      height: 24,
-                      decoration: BoxDecoration(
-                        color: viewModel.isDownloaded
-                            ? AppConstants.successColor.withValues(alpha: 0.1)
-                            : theme.iconTheme.color?.withValues(alpha: 0.1) ??
-                                  Colors.grey.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Icon(
-                        viewModel.isDownloaded
-                            ? Icons.download_done
-                            : Icons.download_outlined,
-                        size: AppConstants.iconSizeSmall,
-                        color: viewModel.isDownloaded
-                            ? AppConstants.successColor
-                            : theme.iconTheme.color ?? Colors.grey,
-                      ),
-                    ),
-
-                  if (showDownloadStatus)
-                    const SizedBox(height: AppConstants.paddingSmall),
-
-                  // Favorite button
-                  GestureDetector(
-                    onTap: () => viewModel.toggleFavorite(),
-                    child: Container(
-                      width: 24,
-                      height: 24,
-                      decoration: BoxDecoration(
-                        color: viewModel.isFavorite
-                            ? AppConstants.errorColor.withValues(alpha: 0.1)
-                            : theme.iconTheme.color?.withValues(alpha: 0.1) ??
-                                  Colors.grey.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Icon(
-                        viewModel.isFavorite
-                            ? Icons.favorite
-                            : Icons.favorite_border,
-                        size: AppConstants.iconSizeSmall,
-                        color: viewModel.isFavorite
-                            ? AppConstants.errorColor
-                            : theme.iconTheme.color ?? Colors.grey,
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ],
           ),
@@ -151,4 +96,26 @@ class SurahListItem extends StatelessWidget {
       ),
     );
   }
+
+  Widget favoriteButton(ThemeData theme) => GestureDetector(
+    onTap: () => viewModel.toggleFavorite(),
+    child: Container(
+      width: 24,
+      height: 24,
+      decoration: BoxDecoration(
+        color: viewModel.isFavorite
+            ? AppConstants.errorColor.withValues(alpha: 0.1)
+            : theme.iconTheme.color?.withValues(alpha: 0.1) ??
+                  Colors.grey.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Icon(
+        viewModel.isFavorite ? Icons.favorite : Icons.favorite_border,
+        size: AppConstants.iconSizeSmall,
+        color: viewModel.isFavorite
+            ? AppConstants.errorColor
+            : theme.iconTheme.color ?? Colors.grey,
+      ),
+    ),
+  );
 }

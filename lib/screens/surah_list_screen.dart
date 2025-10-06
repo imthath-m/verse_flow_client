@@ -38,34 +38,11 @@ class _SurahListScreenState extends State<SurahListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(AppConstants.appName),
-        actions: [
-          IconButton(
-            onPressed: () {
-              // TODO: Navigate to settings screen
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Settings coming soon!')),
-              );
-            },
-            icon: const Icon(Icons.settings),
-          ),
-        ],
-      ),
+      appBar: AppBar(title: const Text('Surahs from Al Quran')),
       body: Consumer<SurahProvider>(
         builder: (context, surahProvider, child) {
           return _buildBody(surahProvider);
         },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // TODO: Navigate to Audio Configuration Modal
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Audio Configuration coming soon!')),
-          );
-        },
-        icon: const Icon(Icons.music_note),
-        label: const Text('Audio Config'),
       ),
     );
   }
