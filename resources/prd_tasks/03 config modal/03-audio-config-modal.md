@@ -24,7 +24,12 @@ Let users configure playback preferences before starting the player.
   * Dependent on selected translation language  
   * *[Confirm available versions per language]*  
 * **Playback Speed**  
-  * Options: 0.5x, 1x (default), 1.5x, 2x  
+  * Options: 0.5x, 0.75x, 1x, 1.25x, 1.5x, 1.75x, 2x (hardcoded)
+  * These options are presented in the playback speed selector (dropdown) in the Audio Configuration Modal and FAB player.
+
+#### Persistence and Application of Selected Speed
+* The default playback speed can be set and saved in the Settings menu and is applied as the default for new playback sessions.
+* If a user selects a different playback speed in the Audio Configuration Modal, that selected speed is applied only for that current session. The default in Settings is not changed unless the user explicitly updates it there.
 
 ### Buttons
 * **Play (Primary CTA)** – navigates to Media Player  

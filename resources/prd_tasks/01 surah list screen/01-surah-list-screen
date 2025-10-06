@@ -41,16 +41,23 @@ Provide users with a searchable, scrollable list of 114 Surahs, with support for
 * When marked as favorite: Filled heart icon (<img src="image-1.png" alt="favorite" width="30" height="30">)
 
 ### Surah Selection
-* Clicking a Surah name opens the **Audio Playback Settings modal**.
-* Modal allows user to configure playback options (generic: reciter, speed, repeat, etc.).
-* Once selected, user can play the Surah.
+* Clicking a Surah name launches the FAB player and the selected Surah plays.
+* If required, user can configure playback options using the *Settings* options in the FAB and click Play.
 
-## User Flow
+## User Flow 1 (Play a surah by clicking a surah name from Surah List)
 1. User navigates via Navigation Bar.
 2. User searches or scrolls through Surah List.
 3. User toggles favorite if desired.
-4. User clicks Surah name → Audio Playback Settings modal opens.
-5. User configures playback options and plays audio.
+4. User clicks Surah name → FAB player launches and the selected Surah plays
+5. If required, User configures playback options using the *Settings* options in the FAB and click Play.
+6. If any surah/range is being played already; terminate it and start the newly selected range with the selected config.
+
+## User flow 2 (Play a range by clicking FAB player button and clicking Play button in the audio config modal)
+* User clicks FAB Player button and  Audio config modal launches 
+  * Range fields in *From* and *To* should be empty. Do not default anything in those 4 fields - From-Surah, From-Ayah, To-Surah, To-Ayah
+  * All other options should be selected based on the defaults set
+* User configures the required options (optional step)
+* User clicks *Play* button
 
 **Visual Style:**
 In sync with existing theme.
