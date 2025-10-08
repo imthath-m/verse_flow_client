@@ -26,21 +26,33 @@ Muslims who do **not speak Arabic fluently** who are
 
 ## 🧭 3. Key User Flows
 
-### 📱 App Launch → Surah Selection → Audio Playbook
-
+### 📱 User Flow 1: Direct Surah Selection
 1. User opens the app
 2. User sees a **list of all Surahs** (number + Arabic name + name in selected translation language)
-3. User taps a Surah
-4. Audio plays: verse-by-verse → Arabic then translated audio with specified pauses
-5. Media player allows Play/Pause, Next/Previous verse, and speed control
-6.  options to update while playing audio:
-    - Range (start ayah to end ayah) or Surah (one or more)
-    - Arabic reciter
-    - Translation language
-    - Translation version
-    - Playback speed
-    
-    All of the options are stored locally on device.
+3. User taps a Surah name
+4. FAB player launches immediately with default settings
+5. Audio plays: verse-by-verse → Arabic then translated audio with specified pauses
+6. User can configure options via FAB player settings if needed
+
+### 📱 User Flow 2: FAB Player Configuration
+1. User opens the app
+2. User clicks FAB Player button (with Play icon)
+3. Audio Configuration Modal opens with empty range fields
+4. User configures:
+   - Surah selection (one or multiple)
+   - Start/End Ayah range
+   - Arabic reciter
+   - Translation language and version
+   - Playback speed
+5. User clicks Play → FAB player launches with selected settings
+6. Audio plays according to configured preferences
+
+### 📱 User Flow 3: Favorites Management
+1. User navigates to Favorites screen
+2. User can play saved ranges directly (uses default settings)
+3. User can add new favorites via "+" button
+4. Range Picker Bottom Sheet opens for surah/ayah selection
+5. User saves favorite → success message displayed
     
 
 ---
@@ -53,54 +65,62 @@ Muslims who do **not speak Arabic fluently** who are
 
 **Content/Elements:**
 
+- **Navigation Bar** with Home, Favorites, Settings, and FAB Player button
 - List of all 114 surahs
     - Displayed with number, Arabic name, and name in translation language
-    - Tap on a Surah to open **Media Player**
+    - Tap on a Surah to launch **FAB Player** with default settings
+    - Favorite toggle (♥️) for each surah
 - Search bar to filter surahs by name or number
 - Visual indicator (icon) if surah is downloaded for offline use
-- “Custom” button to **Audio Configuration Modal**
 
-### 🔹 2. Audio Configuration Modal (Shown before entering Player)
+### 🔹 2. Audio Configuration Modal
 
-**Purpose:** Allow users to configure what and how they want to listen
+**Purpose:** Allow users to configure playback preferences before starting the player
 
 **Fields:**
 
-- **Start ayah / End ayah** selection (range picker)
-- Select 1 or more surahs
+- **Range Picker**: Start Ayah / End Ayah selection
+- **Multi-Select Dropdown**: Surah Selection (one or multiple surahs)
 - **Arabic Reciter** (dropdown list)
 - **Translation Language** (dropdown: English, Tamil, Urdu)
 - **Translation Version** (dropdown — based on selected language)
-- **Playback Speed** (dropdown: 0.5x, Normal, 1.5x, 2x)
-- **Play** button (navigates to Player screen)
+- **Playback Speed** (dropdown: 0.5x, 0.75x, 1x, 1.25x, 1.5x, 1.75x, 2x)
+- **Play** button (navigates to FAB Player)
 - **Cancel** button (returns to previous screen)
 
 **Behavior:**
 
 - Pre-populates with user's last-used preferences
+- When launched from Favorites, Play button becomes Save button
 - All selections are saved as new defaults for future sessions
 
-### 🔹 3. Media Player Screen
+### 🔹 3. FAB Player (Floating Action Button Player)
 
 **Purpose:** Seamless audio playback experience optimized for memorization
 
 **Controls & Features:**
 
+- **Top Bar**: Back navigation and current Surah + Ayah range display
 - **Play / Pause** toggle
 - **Next / Previous Verse** navigation
-- **Playback Speed Adjuster**
+- **Playback Speed Adjuster** (0.5x, 0.75x, 1x, 1.25x, 1.5x, 1.75x, 2x)
+- **Stop** button (terminates session and returns to Surah List)
 - **Progress indicator** showing current verse position within selected range
 - Streaming audio with automatic caching
-- No text display (scrolling text planned for future versions)
 - Simple, distraction-free interface
 
 **Audio Playback Pattern:**
 
 - Plays selected range once (no automatic looping)
-- Within each verse: Arabic audio → 300 millisecond pause → Translation audio
-- Between verses: Translation of previous verse → 500 millisecond pause → Arabic of next verse
-    
-    Pause durations to be tuned further based on usage
+- Within each verse: Arabic audio → 300ms pause → Translation audio
+- Between verses: Translation of previous verse → 500ms pause → Arabic of next verse
+
+**FAB Player Behavior:**
+
+- **Launch from Surah Selection**: Starts immediately with default settings
+- **Launch from FAB Button**: Opens Audio Configuration Modal first
+- **Background Playback**: Continues when user navigates away (icon changes to Pause)
+- **Session Management**: Only one session at a time, new selection terminates current
     
 
 ### 🔹 4. Favorites Screen
@@ -109,28 +129,47 @@ Muslims who do **not speak Arabic fluently** who are
 
 **User Actions:**
 
-- Add a new **Custom Range** via "+" button
-- Play saved ranges directly from the list
-- Remove ranges (swipe to delete)
-- Each favorite displays: "Surah [Number]: Ayah [Start]-[End]" with selected reciter & translation language
-- Press ♥️ near a Surah to mark it as Favorite
+- **Top Bar**: "Favorites" title with back navigation
+- **Favorites List**: Each item displays Surah number + Ayah range with Play and Delete buttons
+- **Play Button**: Opens FAB Player with default settings
+- **Delete Button**: Removes favorite after confirmation dialog
+- **FAB (+)**: Opens Range Picker Bottom Sheet for adding new favorites
+- **Range Picker Bottom Sheet**: Surah selection and Ayah range picker
+- **Success Message**: 3-second display after saving favorite
 
 **Example Display:**
 
-- Surah 2: Ayah 1-7 (Mishary, English)
-- Surah 36: Ayah 1-12 (Abdul Rahman, Tamil)
+- Surah 2: Ayah 1-7
+- Surah 36: Ayah 1-12
+
+**Delete Confirmation Dialog:**
+- Title: "Delete Favorite"
+- Message: "Are you sure you want to delete this favorite?"
+- Buttons: Yes (Primary) / Cancel (Secondary)
 
 ### 🔹 5. Settings Screen *(MVP-light version)*
 
 **Purpose:** Store user defaults for streamlined experience
 
-**Options:**
+**Sections:**
 
-- Set default Arabic Reciter
-- Set default Translation (Language and Version. For example, English and Sahih International)
-- Set default Playback Speed
-- Manage Downloads (clear cache / view downloaded surahs)
-- App version information
+**1. Default Preferences**
+- **Arabic Reciter** (Dropdown): Stores default reciter for new playback sessions
+- **Translation** (Dropdown): Language + Version selection for new sessions
+- **Playback Speed** (Dropdown): 0.5x, 1x (default), 1.25x, 1.5x, 2x
+
+**2. Downloads Management**
+- **Clear Downloads Button**: Clears all offline data with confirmation dialog
+- **Downloaded Surahs List**: Shows downloaded surahs with Remove button
+- **Remove Confirmation**: Individual surah removal with confirmation
+
+**3. System Info**
+- **App Version**: Non-editable field from build metadata
+- Display format: "App Version: 1.0.0 (Build 12)"
+
+**Confirmation Dialogs:**
+- Clear Downloads: "Are you sure you want to clear all offline data?"
+- Remove Download: "Are you sure you want to remove this surah from downloads?"
 
 ---
 
@@ -177,7 +216,7 @@ Muslims who do **not speak Arabic fluently** who are
 A: The app plays the selected range once without automatic looping. Users can manually replay if needed. This prevents overwhelming beginners while allowing focused memorization sessions.
 
 **Q: What's the optimal pause timing between Arabic and translation audio?**
-A: Within each verse, there's a 1-second pause between Arabic recitation and its translation. Between verses, there's a 1.5-second pause between the previous verse's translation and the next verse's Arabic, giving users time to process and transition.
+A: Within each verse, there's a 300ms pause between Arabic recitation and its translation. Between verses, there's a 500ms pause between the previous verse's translation and the next verse's Arabic, giving users time to process and transition.
 
 **Q: Should users preview different reciters before selection?**
 A: For MVP simplicity, a dropdown list of reciters is sufficient. Previewing functionality can be considered for future versions based on user feedback.

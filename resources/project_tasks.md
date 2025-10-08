@@ -27,18 +27,19 @@ Flutter-based Quran memorization app with audio playback, translations, and offl
 ### High Priority
 - [ ] **#9** Implement static list of 114 surahs *(Placeholder for API data)*
 - [ ] **#10** Fetch surah list from Quran API *(Replace static data)*
-- [ ] **#14** Tap surah → open Audio Config modal *(Navigation link)*
+- [ ] **#14** Tap surah → launch FAB Player with default settings *(Navigation link)*
+- [ ] **#96** Implement navigation bar with Home, Favorites, Settings, FAB Player *(Global navigation)*
+- [ ] **#97** Add favorite toggle (♥️) for each surah *(Heart outline/filled states)*
 
 ### Medium Priority
 - [ ] **#8** Design Surah List screen wireframe *(Prepare UI layout)*
 - [ ] **#11** Implement search bar (by name/number) *(Client-side filtering)*
 - [ ] **#12** Add download indicator icon for surahs *(Reflects offline availability)*
-- [ ] **#13** Add favorite (♥️) toggle *(Connects to Favorites)*
 - [ ] **#92** Implement lazy loading for surah list *(Improves performance)*
 
 ---
 
-## Sprint 2: Audio Config
+## Sprint 2: Audio Config Modal
 
 ### High Priority
 - [ ] **#16** Build modal UI with dropdowns and range selector *(Core user feature)*
@@ -47,37 +48,48 @@ Flutter-based Quran memorization app with audio playback, translations, and offl
 - [ ] **#19** Populate translation language dropdown *(Dropdown static for MVP)*
 - [ ] **#20** Load translation versions based on selected language *(Dynamic version selection)*
 - [ ] **#21** Save user selections to local storage *(Preference persistence)*
-- [ ] **#23** Implement Play → open Media Player *(Navigation)*
+- [ ] **#23** Implement Play → open FAB Player *(Navigation)*
+- [ ] **#98** Implement multi-select dropdown for surah selection *(Multiple surahs support)*
+- [ ] **#99** Standardize playback speed options (0.5x, 0.75x, 1x, 1.25x, 1.5x, 1.75x, 2x) *(Consistent speed options)*
+- [ ] **#100** Handle empty range fields when launched from FAB *(Default behavior)*
 
 ### Medium Priority
 - [ ] **#15** Design Audio Config modal wireframe *(UI layout planning)*
 - [ ] **#22** Pre-populate modal with last-used defaults *(Enhances usability)*
 - [ ] **#72** Validate default values loaded correctly *(QA check)*
 - [ ] **#93** Validate language/version dependency logic
+- [ ] **#101** Implement Save button for Favorites mode *(Different behavior for Favorites)*
 
 ### Low Priority
 - [ ] **#86** Add tooltip/help icons for new users *(Non-MVP)*
 
 ---
 
-## Sprint 3: Media Player
+## Sprint 3: FAB Player
 
 ### High Priority
-- [ ] **#25** Build player UI layout (Play/Pause, Next/Previous, Progress, Speed) *(Core controls)*
+- [ ] **#25** Build FAB Player UI layout (Top bar, Play/Pause, Next/Previous, Progress, Speed, Stop) *(Core controls)*
 - [ ] **#26** Integrate Arabic audio streaming *(Core playback)*
 - [ ] **#27** Integrate translation audio (from backend cache) *(Requires TTS backend)*
-- [ ] **#28** Implement playback sequence Arabic → pause → Translation *(Memorization pattern)*
+- [ ] **#28** Implement playback sequence Arabic → 300ms pause → Translation *(Memorization pattern)*
 - [ ] **#32** Handle playback errors (network failure) *(Fallback UI/Snackbar)*
 - [ ] **#34** Manual testing checklist for player *(Create and run)*
 - [ ] **#73** Test playback sequence correctness *(Arabic→Translation)*
+- [ ] **#102** Implement FAB Player launch from Surah selection *(Direct launch with defaults)*
+- [ ] **#103** Implement FAB Player launch from FAB button *(Opens Audio Config first)*
+- [ ] **#104** Implement background playback behavior *(Icon changes, continues playing)*
+- [ ] **#105** Implement session management *(One session at a time, terminate current)*
+- [ ] **#106** Implement Stop button behavior *(Terminate session, return to Surah List)*
 
 ### Medium Priority
-- [ ] **#24** Design Media Player screen wireframe *(UI baseline)*
+- [ ] **#24** Design FAB Player screen wireframe *(UI baseline)*
 - [ ] **#29** Implement Next/Previous verse navigation *(Verse control)*
-- [ ] **#30** Implement playback speed adjustment *(0.5x–2x)*
+- [ ] **#30** Implement playback speed adjustment *(0.5x, 0.75x, 1x, 1.25x, 1.5x, 1.75x, 2x)*
 - [ ] **#31** Implement progress indicator sync *(Shows current verse)*
 - [ ] **#90** Implement buffer progress indicator
 - [ ] **#91** Test playback speed functionality
+- [ ] **#107** Implement FAB Player visibility states *(Play, Pause, Paused icons)*
+- [ ] **#108** Implement clicking outside FAB Player behavior *(Background vs paused states)*
 
 ### Low Priority
 - [ ] **#33** Keep screen awake while playing *(Use wakelock)*
@@ -118,23 +130,31 @@ Flutter-based Quran memorization app with audio playback, translations, and offl
 ## Sprint 5: Favorites & Settings
 
 ### High Priority
-- [ ] **#42** Build UI list of saved favorites *(Display ranges)*
-- [ ] **#43** Add new favorite (save surah+range+reciter+lang) *(Persistent storage)*
-- [ ] **#45** Play directly from favorites list *(End-to-end functionality)*
+- [ ] **#42** Build Favorites screen UI with top bar and list *(Display ranges)*
+- [ ] **#43** Implement Play button for favorites *(Opens FAB Player with defaults)*
+- [ ] **#45** Implement Delete button with confirmation dialog *(Remove favorites)*
 - [ ] **#46** Manual testing checklist for favorites *(Create and run)*
 - [ ] **#48** Implement default Arabic Reciter preference *(Stored locally)*
 - [ ] **#49** Implement default Translation preference *(Language + version)*
 - [ ] **#76** Test add/remove favorite flows *(QA)*
+- [ ] **#109** Implement FAB (+) button for adding favorites *(Opens Range Picker)*
+- [ ] **#110** Implement Range Picker Bottom Sheet *(Surah selection and Ayah range)*
+- [ ] **#111** Implement success message after saving favorite *(3-second display)*
+- [ ] **#112** Implement Delete confirmation dialog *(Title, message, Yes/Cancel buttons)*
 
 ### Medium Priority
 - [ ] **#41** Design Favorites screen wireframe *(Before UI dev)*
-- [ ] **#44** Swipe-to-delete favorite *(Update storage/UI)*
+- [ ] **#44** Implement individual favorite removal *(Update storage/UI)*
 - [ ] **#47** Design Settings screen wireframe *(UI baseline)*
 - [ ] **#50** Implement default Playback Speed preference *(Stored locally)*
 - [ ] **#51** Implement Manage Downloads (clear/selective delete) *(Storage mgmt)*
 - [ ] **#53** Manual testing checklist for settings *(Create and run)*
 - [ ] **#77** Test default playback settings apply *(QA)*
 - [ ] **#78** Test Manage Downloads *(QA)*
+- [ ] **#113** Implement Settings screen sections *(Default Preferences, Downloads, System Info)*
+- [ ] **#114** Implement Clear Downloads with confirmation *(Confirmation dialog)*
+- [ ] **#115** Implement Downloaded Surahs list with Remove buttons *(Individual removal)*
+- [ ] **#116** Implement App Version display *(From build metadata)*
 
 ### Low Priority
 - [ ] **#52** Show app version info *(Simple display)*
@@ -180,34 +200,37 @@ Flutter-based Quran memorization app with audio playback, translations, and offl
 
 ## Progress Summary
 
-**Total Tasks:** 95  
+**Total Tasks:** 116  
 **Completed:** 0  
 **In Progress:** 0  
-**To Do:** 95
+**To Do:** 116
 
 ### By Sprint
 - **Sprint 0:** 9 tasks
-- **Sprint 1:** 6 tasks
-- **Sprint 2:** 8 tasks
-- **Sprint 3:** 10 tasks
+- **Sprint 1:** 8 tasks
+- **Sprint 2:** 12 tasks
+- **Sprint 3:** 16 tasks
 - **Sprint 4:** 16 tasks
-- **Sprint 5:** 14 tasks
+- **Sprint 5:** 24 tasks
 - **Sprint 6:** 6 tasks
 - **Sprint 7:** 9 tasks
 
 ### By Priority
-- **High Priority:** 54 tasks
-- **Medium Priority:** 35 tasks
-- **Low Priority:** 6 tasks
+- **High Priority:** 68 tasks
+- **Medium Priority:** 39 tasks
+- **Low Priority:** 9 tasks
 
 ---
 
 ## Notes
 - Tasks marked *(Non-MVP)* can be deprioritized if time is constrained
-- Backend tasks in Sprint 4 are critical blockers for Media Player functionality
+- Backend tasks in Sprint 4 are critical blockers for FAB Player functionality
 - Cross-device testing should happen throughout, not just in Sprint 7
 - Consider adding integration tests alongside manual testing
+- New tasks reflect updated FRDs with FAB Player, enhanced Favorites, and detailed Settings
+- Playback speed options standardized across all components
+- Audio timing updated to 300ms/500ms pause pattern
 
 ---
 
-**Last Updated:** September 29, 2025
+**Last Updated:** January 2, 2025
