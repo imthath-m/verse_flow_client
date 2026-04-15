@@ -8,10 +8,10 @@ Flutter-based Quran memorization app with audio playback, translations, and offl
 ## Sprint 0: App Foundations & Setup
 
 ### High Priority
-- [ ] **#1** Initialize Flutter project with lint rules *(First setup task)*
-- [ ] **#2** Setup folder structure (screens, models, services) *(Pre-requisite for all)*
-- [ ] **#3** Configure dependencies (http, just_audio, shared_preferences, dio) *(Required for networking + playback)*
-- [ ] **#4** Implement base navigation skeleton *(Surah List → modal → player)*
+- [x] **#1** Initialize Flutter project with lint rules *(First setup task)* 📝 [pubspec.yaml](../../pubspec.yaml)
+- [x] **#2** Setup folder structure (screens, models, services) *(Pre-requisite for all)* 📁 [lib/](../../lib/)
+- [x] **#3** Configure dependencies (http, just_audio, shared_preferences, dio) *(Required for networking + playback)* 📝 [pubspec.yaml](../../pubspec.yaml)
+- [x] **#4** Implement base navigation skeleton *(Surah List → modal → player)* 🔄 [main.dart](../../lib/main.dart) | [surah_list_screen.dart](../../lib/screens/surah_list_screen.dart)
 - [ ] **#5** Setup environment configs (API URLs, TTS endpoint) *(Needed before API integration)*
 - [ ] **#71** Setup environment configs for testing *(Prep test endpoints)*
 
@@ -25,17 +25,17 @@ Flutter-based Quran memorization app with audio playback, translations, and offl
 ## Sprint 1: Surah List
 
 ### High Priority
-- [ ] **#9** Implement static list of 114 surahs *(Placeholder for API data)*
-- [ ] **#10** Fetch surah list from Quran API *(Replace static data)*
-- [ ] **#14** Tap surah → launch FAB Player with default settings *(Navigation link)*
-- [ ] **#96** Implement navigation bar with Home, Favorites, Settings, FAB Player *(Global navigation)*
-- [ ] **#97** Add favorite toggle (♥️) for each surah *(Heart outline/filled states)*
+- [x] **#9** Implement static list of 114 surahs *(Placeholder for API data)* 📦 [surah_provider.dart](../../lib/providers/surah_provider.dart)
+- [x] **#10** Fetch surah list from Quran API *(Replace static data)* 🌐 [quran_cloud service](../../quran_cloud/)
+- [x] **#14** Tap surah → launch FAB Player with default settings *(Navigation link)* 🔗 [surah_list_item.dart](../../lib/widgets/surah_list_item.dart) (Currently routing directly to MediaPlayerScreen)
+- [ ] **#96** Implement navigation bar with Home, Favorites, Settings, FAB Player *(Global navigation)* ⚠️ Missing in [surah_list_screen.dart](../../lib/screens/surah_list_screen.dart)
+- [x] **#97** Add favorite toggle (♥️) for each surah *(Heart outline/filled states)* ❤️ [surah_list_item.dart](../../lib/widgets/surah_list_item.dart)
 
 ### Medium Priority
 - [ ] **#8** Design Surah List screen wireframe *(Prepare UI layout)*
-- [ ] **#11** Implement search bar (by name/number) *(Client-side filtering)*
+- [x] **#11** Implement search bar (by name/number) *(Client-side filtering)* 🔍 [search_bar.dart](../../lib/widgets/search_bar.dart)
 - [ ] **#12** Add download indicator icon for surahs *(Reflects offline availability)*
-- [ ] **#92** Implement lazy loading for surah list *(Improves performance)*
+- [x] **#92** Implement lazy loading for surah list *(Improves performance)* ⚡ [ListView.builder implementation](../../lib/screens/surah_list_screen.dart)
 
 ---
 
@@ -47,7 +47,7 @@ Flutter-based Quran memorization app with audio playback, translations, and offl
 - [ ] **#18** Populate reciters dropdown from API *(Placeholder API)*
 - [ ] **#19** Populate translation language dropdown *(Dropdown static for MVP)*
 - [ ] **#20** Load translation versions based on selected language *(Dynamic version selection)*
-- [ ] **#21** Save user selections to local storage *(Preference persistence)*
+- [ ] **#21** Save user selections to local storage *(Preference persistence)* 💾 Setup required in [storage_service.dart](../../lib/services/storage_service.dart)
 - [ ] **#23** Implement Play → open FAB Player *(Navigation)*
 - [ ] **#98** Implement multi-select dropdown for surah selection *(Multiple surahs support)*
 - [ ] **#99** Standardize playback speed options (0.5x, 0.75x, 1x, 1.25x, 1.5x, 1.75x, 2x) *(Consistent speed options)*
@@ -68,14 +68,14 @@ Flutter-based Quran memorization app with audio playback, translations, and offl
 ## Sprint 3: FAB Player
 
 ### High Priority
-- [ ] **#25** Build FAB Player UI layout (Top bar, Play/Pause, Next/Previous, Progress, Speed, Stop) *(Core controls)*
-- [ ] **#26** Integrate Arabic audio streaming *(Core playback)*
+- [x] **#25** Build FAB Player UI layout (Top bar, Play/Pause, Next/Previous, Progress, Speed, Stop) *(Core controls)* ✅ Partial implementation in [media_player_widget.dart](../../lib/widgets/media_player_widget.dart) and [player_controls_widget.dart](../../lib/widgets/player_controls_widget.dart)
+- [ ] **#26** Integrate Arabic audio streaming *(Core playback)* 🎵 Setup required in [audio_player_service.dart](../../lib/services/audio_player_service.dart)
 - [ ] **#27** Integrate translation audio (from backend cache) *(Requires TTS backend)*
 - [ ] **#28** Implement playback sequence Arabic → 300ms pause → Translation *(Memorization pattern)*
 - [ ] **#32** Handle playback errors (network failure) *(Fallback UI/Snackbar)*
 - [ ] **#34** Manual testing checklist for player *(Create and run)*
 - [ ] **#73** Test playback sequence correctness *(Arabic→Translation)*
-- [ ] **#102** Implement FAB Player launch from Surah selection *(Direct launch with defaults)*
+- [x] **#102** Implement FAB Player launch from Surah selection *(Direct launch with defaults)* ✅ Implemented via navigation in [surah_list_item.dart](../../lib/widgets/surah_list_item.dart)
 - [ ] **#103** Implement FAB Player launch from FAB button *(Opens Audio Config first)*
 - [ ] **#104** Implement background playback behavior *(Icon changes, continues playing)*
 - [ ] **#105** Implement session management *(One session at a time, terminate current)*
@@ -169,7 +169,7 @@ Flutter-based Quran memorization app with audio playback, translations, and offl
 
 ### Medium Priority
 - [ ] **#54** Create high-fidelity mockups *(Align team)*
-- [ ] **#55** Apply minimal distraction-free theme *(Consistency)*
+- [x] **#55** Apply minimal distraction-free theme *(Consistency)* 🎨 [theme.dart](../../lib/utils/theme.dart)
 - [ ] **#83** Finalize UI polish & colors
 
 ### Low Priority
@@ -201,23 +201,23 @@ Flutter-based Quran memorization app with audio playback, translations, and offl
 ## Progress Summary
 
 **Total Tasks:** 116  
-**Completed:** 0  
+**Completed:** 13  
 **In Progress:** 0  
-**To Do:** 116
+**To Do:** 103
 
 ### By Sprint
-- **Sprint 0:** 9 tasks
-- **Sprint 1:** 8 tasks
+- **Sprint 0:** 9 tasks (*4 completed*)
+- **Sprint 1:** 8 tasks (*6 completed*)
 - **Sprint 2:** 12 tasks
-- **Sprint 3:** 16 tasks
+- **Sprint 3:** 16 tasks (*2 completed*)
 - **Sprint 4:** 16 tasks
 - **Sprint 5:** 24 tasks
-- **Sprint 6:** 6 tasks
+- **Sprint 6:** 6 tasks (*1 completed*)
 - **Sprint 7:** 9 tasks
 
 ### By Priority
-- **High Priority:** 68 tasks
-- **Medium Priority:** 39 tasks
+- **High Priority:** 68 tasks (*10 completed*)
+- **Medium Priority:** 39 tasks (*3 completed*)
 - **Low Priority:** 9 tasks
 
 ---
@@ -230,7 +230,8 @@ Flutter-based Quran memorization app with audio playback, translations, and offl
 - New tasks reflect updated FRDs with FAB Player, enhanced Favorites, and detailed Settings
 - Playback speed options standardized across all components
 - Audio timing updated to 300ms/500ms pause pattern
+- **Update (Mid-Sprint Audit):** Hyperlinks provided to corresponding implementation files for streamlined agent interactions.
 
 ---
 
-**Last Updated:** January 2, 2025
+**Last Updated:** 15 April 2026
